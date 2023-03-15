@@ -34,9 +34,7 @@
                     }else{
                         echo "Test terminado";
                     }
-                        
-
-                    
+                                     
                 case 'insert_answer':
                     $quest_id = $_POST['quest_id'];
                     $answer = $_POST['answer'];
