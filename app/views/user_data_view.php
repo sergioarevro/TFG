@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Información personal</title>
+        <?php include 'header.php'; ?>
 </head>
 <body>
         <h2>Información personal</h2>

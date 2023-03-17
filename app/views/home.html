@@ -2,11 +2,122 @@
 <html>
 <head>
 	<title>Home</title>
+        <?php include 'header.html'; ?>
+        <link href="bootstrap3/css/bootstrap.css" rel="stylesheet" /> 
+        <link href="assets/css/ct-paper.css" rel="stylesheet"/>
+
+        <!--     Fonts and icons     -->
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+        
 </head>
 <body>
-	<h1>Bienvenido</h1>
-        <a href="app/views/user_data_view.php"><button>Test de información personal</button></a>
-        <a href="index.php?section=operas&action=show_quest&num=1"><button>Test Operas</button></a>
+        <div class="wrapper">
+        <div class="landing-header" style="background-image: url('assets/images/caution.jpg');">
+            <div class="container">
+                <div class="motto">
+                    <h1 class="title-uppercase">Título de la pagina</h1>
+                    <h3>Inicia el Test</h3>
+                    <br />
+                    <a href="app/views/user_data_view.php" class="btn"></i>Inicia el Test</a>
+                </div>
+            </div>    
+        </div>
+        <div class="main">
+            <div class="section text-center landing-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2>Información sobre los Test</h2>
+                            <h5>Pequeña descripción de los Test que se van a realizar.</h5>
+                            <br />
+                            <a href="#" class="btn btn-danger btn-fill">Más Detalles</a>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+            
+            <div class="section section-light-brown landing-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 column">
+                            <h4>Info adicional 1</h4>
+                            <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+                            <a class="btn btn-danger btn-simple" href="#">See more <i class="fa fa-chevron-right"></i></a>
+                        </div>
+                        <div class="col-md-4 column">
+                            <h4>Info adicional 2</h4>
+                            <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+                            <a class="btn btn-danger btn-simple" href="#">See more <i class="fa fa-chevron-right"></i></a>
+                        </div>
+                        <div class="col-md-4 column">
+                            <h4>Info adicional 3</h4>
+                            <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+                            <a class="btn btn-danger btn-simple" href="#">See more <i class="fa fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section section-dark text-center landing-section">
+                <div class="container">
+                    <h2>Sobre nosotros</h2>
+                    <div class="col-md-4">
+                        <div class="team-player">
+                            <img src="../assets/paper_img/chet_faker_2.jpg" alt="Thumbnail Image" class="img-circle img-responsive">
+                            <h5>Chet Faker <br /><small class="text-muted">Music</small></h5>
+                            <p>You can write here details about one of your team members. You can give more details about what they do. Feel free to add some <a href="#">links</a> for people to be able to follow them outside the site.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="team-player">
+                            <img src="../assets/paper_img/flume.jpg" alt="Thumbnail Image" class="img-circle img-responsive">
+                            <h5>Flume <br /><small class="text-muted">Production</small></h5>
+                            <p>You can write here details about one of your team members. You can give more details about what they do. Feel free to add some <a href="#">links</a> for people to be able to follow them outside the site.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="team-player">
+                            <img src="../assets/paper_img/banks.jpg" alt="Thumbnail Image" class="img-circle img-circle img-responsive">
+                            <h5>Banks <br /><small class="text-muted">Music</small></h5>
+                            <p>You can write here details about one of your team members. You can give more details about what they do. Feel free to add some <a href="#">links</a> for people to be able to follow them outside the site.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section landing-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <h2 class="text-center">Formulario de contacto</h2>
+                            <form class="contact-form">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Nombre</label>
+                                        <input class="form-control" placeholder="Nombre">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Email</label>
+                                        <input class="form-control" placeholder="Email">
+                                    </div>
+                                </div>
+                                <label>Mensaje</label>
+                                <textarea class="form-control" rows="4" placeholder="Escribe aquí tu mensaje"></textarea>
+                                <div class="row">
+                                    <div class="col-md-4 col-md-offset-4">
+                                        <button class="btn btn-danger btn-block btn-lg btn-fill">Enviar Mensaje</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>     
+    </div>
 </body>
 </html>
 

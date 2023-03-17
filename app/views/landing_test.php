@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Iniciar Test</title>
+        <?php include 'header.php'; ?>
 </head>
 <body>
 	<h1>Test <?php echo $test; ?></h1>
