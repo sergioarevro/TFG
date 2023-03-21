@@ -1,15 +1,15 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'].'/TFG/config/config.php';
-include ROOT_PATH.'config/database.php';
+//include ROOT_PATH.'config/database.php';
 
 class OperasModel{
     
     private $db_connector;
     private $conn;
     
-    public function __construct() {
+    public function __construct($dbconnector) {
         session_start();
-        $this->db_connector = DataBase::getInstance();
+        $this->db_connector = $dbconnector;
         //$this->conn = $this->db_connector->getConnection();
     }
     
