@@ -6,6 +6,7 @@ class IqModel {
     private $db_connector;
     
     public function __construct($db_connector) {
+        session_start();
         $this->db_connector = $db_connector;
     }
     
@@ -55,15 +56,23 @@ class IqModel {
     }
     
     public function insertAnswer($question_id, $answer){
+
         $conn = $this->db_connector->getConnection();
         $user_id = $_SESSION['user_id'];
+        //$user_id = 1;
 
-        $sql = "INSERT INTO answers_iq (id_user, id_question_iq, answer) VALUES (?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("iii", $user_id, $question_id, $answer);
-        $stmt->execute();
-
-        
+        $sql = "INSERT INTO answers_iq (id_user, id_quest_iq, answer) VALUES (?, ?, ?)";
+        $stmt = $conn->prepare($sql);  
+        if (!$stmt) {
+            error_log("Prepare error:  . $conn->error");
+            return;
+        }
+    
+        $stmt->bind_param("iis", $user_id, $question_id, $answer);
+        if (!$stmt->execute()) {
+            error_log("Execution error:  . $stmt->error");
+            return;
+        }
         $this->db_connector->closeConnection($conn);
     }
     

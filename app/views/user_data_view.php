@@ -99,10 +99,7 @@
                         </div>
                     </div>  
                 </div>
-                
-                <div class="footer register-footer text-center">
-                    <h6>&copy; Escribir mensaje??<i class="fa fa-heart heart"></i></h6>
-                </div>
+             <?php include "footer.html"; ?>
             </div>  
         
         <script>
