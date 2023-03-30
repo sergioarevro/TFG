@@ -36,8 +36,8 @@
                                     <?php if ($text == 'iq') { ?>
                                             <h3 class="title text-center col-md-12">Test IQ</h3>
                                                 <form id="test_operas" method="POST" action="index.php?section=iq&action=insert_answer">
-                                                    <img class='image col-md-12' src='<?php echo $question->path; ?>' class='center-block'>
-                                                    <img class='image col-md-12' src='assets/images_iq/1r.png' class='center-block'>
+                                                    <img class='image col-md-12' src='<?php echo $question->path_q; ?>' class='center-block'>
+                                                    <img class='image col-md-12' src='<?php echo $question->path_a; ?>' class='center-block'>
                                                     
                                                     <div class="row text-center">
                                                         <input type="hidden" name="quest_id" value="<?php echo $question->id; ?>">

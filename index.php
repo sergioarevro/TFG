@@ -67,24 +67,24 @@
         }
         
         if ($section == 'iq'){
-            error_log("0 dentro iq show - num quest: $num_quest");
             switch ($action){
                 case 'show_quest': 
-                    error_log("1 dentro iq show - num quest: $num_quest");
+                    error_log("dentro de show quest");
                     $num_quest = isset($_GET['num']) ? $_GET['num'] : '';
-                    error_log("2 dentro iq show - num quest: $num_quest");
                     require_once MODELS_PATH.'iq_model.php';
                     $iq_model = new IqModel($db_connector);
-                    //$rows = $iq_model->getNumQuest();
-                    //$perc = ($num_quest/40)*100;
-                    $perc=50;
-                    $rows=100;
+                    //$perc=50;
+                    //$rows=100;
+                    $rows = $iq_model->getNumQuest();
+                    $perc = ($num_quest/29)*100;
                     if ($num_quest <= $rows){
+                        error_log("dentro if show quest");
                         $question = $iq_model->getQuestionbyID($num_quest); 
                         $text='iq';
                         require_once VIEWS_PATH.'test_view.php';
                         break;
                     }else{
+                        //añadir vista fin de test
                         require_once 'home.html';
                         break;
                     }

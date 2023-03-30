@@ -6,13 +6,14 @@ class IqModel {
     private $db_connector;
     
     public function __construct($db_connector) {
+        error_log("dentro constructor iq model");
         session_start();
         $this->db_connector = $db_connector;
     }
     
     public function getAllQuestions() {
     $conn = $this->db_connector->getConnection();
-    $sql = "SELECT id, path FROM questions_iq";
+    $sql = "SELECT id, path_q, path_a FROM questions_iq";
     $result = mysqli_query($this->conn, $sql);     
 
     $questions = array();
@@ -21,7 +22,8 @@ class IqModel {
             while ($row = mysqli_fetch_object($result)) {
                 $quest = new stdClass();
                 $quest->id = $row->id;
-                $quest->path = $row->path;
+                $quest->path_q = $row->path_q;
+                $quest->path_a = $row->path_a;
                 $questions[] = $quest;
             }
         }
@@ -36,18 +38,22 @@ class IqModel {
     
     public function getQuestionbyID($id){
         $conn = $this->db_connector->getConnection();
-        $sql = "SELECT id, path FROM questions_iq WHERE id = ?";
+        error_log("dentro get quest by id");
+        $sql = "SELECT id, path_q, path_a FROM questions_iq WHERE id = ?";
+        error_log("posterior comanda sql");
+        
         $stmt = mysqli_prepare($conn, $sql);
 
         mysqli_stmt_bind_param($stmt, "i", $id);
         mysqli_stmt_execute($stmt);
 
-        mysqli_stmt_bind_result($stmt, $id, $path);
+        mysqli_stmt_bind_result($stmt, $id, $path_q, $path_a);
         mysqli_stmt_fetch($stmt);
         
         $quest = new stdClass();   
         $quest->id = $id;
-        $quest->path = $path;
+        $quest->path_q = $path_q;
+        $quest->path_a = $path_a;
 
         $this->db_connector->closeConnection($conn);
 
