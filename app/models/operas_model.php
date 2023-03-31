@@ -1,6 +1,5 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'].'/TFG/config/config.php';
-//include ROOT_PATH.'config/database.php';
 
 class OperasModel{
     
@@ -10,7 +9,6 @@ class OperasModel{
     public function __construct($dbconnector) {
         session_start();
         $this->db_connector = $dbconnector;
-        //$this->conn = $this->db_connector->getConnection();
     }
     
     public function getAllQuestions() {

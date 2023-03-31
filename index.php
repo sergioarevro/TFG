@@ -7,6 +7,7 @@
     $action = isset($_GET['action']) ? $_GET['action'] : '';
     $view = isset($_GET['view']) ? $_GET['view'] : '';
     $test = isset($_GET['test']) ? $_GET['test'] : '';
+    $start = isset($_GET['start']) ? $_GET['start'] : '';
 
     if (empty($section) && empty($action) && empty($view) && empty($test) ) {
         include 'app/views/home.html';
@@ -59,7 +60,6 @@
                     if ($quest_id <= 40){
                         header("Location: index.php?section=operas&action=show_quest&num=$quest_id");
                     }else {
-                       //header("Location: index.php?section=iq&action=show_test&num=1"); 
                         header("Location: index.php?view=init_test&test=iq");
                     }
                     break;
@@ -69,23 +69,19 @@
         if ($section == 'iq'){
             switch ($action){
                 case 'show_quest': 
-                    error_log("dentro de show quest");
                     $num_quest = isset($_GET['num']) ? $_GET['num'] : '';
                     require_once MODELS_PATH.'iq_model.php';
                     $iq_model = new IqModel($db_connector);
-                    //$perc=50;
-                    //$rows=100;
                     $rows = $iq_model->getNumQuest();
                     $perc = ($num_quest/29)*100;
+                    
                     if ($num_quest <= $rows){
-                        error_log("dentro if show quest");
                         $question = $iq_model->getQuestionbyID($num_quest); 
                         $text='iq';
                         require_once VIEWS_PATH.'test_view.php';
                         break;
                     }else{
-                        //añadir vista fin de test
-                        require_once 'home.html';
+                        header("Location: index.php?view=show_score&test=iq");
                         break;
                     }
 
@@ -95,7 +91,6 @@
                     $answer = $_POST['answer'];
                     require_once MODELS_PATH.'iq_model.php';
                     $iq_model = new IqModel($db_connector);
-                    error_log("insert_answer questid: $quest_id / answer: $answer");
                     $iq_model->insertAnswer($quest_id, $answer);
                     $quest_id++;
                     header("Location: index.php?section=iq&action=show_quest&num=$quest_id");
@@ -104,13 +99,38 @@
                 }
             
         }
+        if ($section == 'pishing'){
+            switch ($action){
+                case 'start': 
+                    require_once VIEWS_PATH.'landing_pishing.php';
+                    break;
+                
+                case 'init_test':
+                    $test = $_POST['test'];
+                    require_once VIEWS_PATH.'landing_test?test=iq.php';
+                    break;
+            }
+        }
+       
         if ($view){
             switch($view){
                 case 'init_test';
-                    require_once VIEWS_PATH.'landing_test.php'; 
-                        
+                    require_once VIEWS_PATH.'landing_test.php';
+                    break;
+                    
+                case 'show_score';
+                    require_once MODELS_PATH.'iq_model.php';
+                    $iq_model = new IqModel($db_connector);
+                    error_log("post instanciado show score");
+                    //$score = $iq_model->calculateTestScore();
+                    //$test = $_POST['iq'];
+                    $score = 100;
+                    require_once VIEWS_PATH.'test_score_view.php';  
+                    break;
             }
         }
+
+        
         
     }
 ?>

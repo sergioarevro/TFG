@@ -30,8 +30,6 @@ class UserModel {
         $user_id = mysqli_insert_id($conn);
         $_SESSION['user_id'] = $user_id;
 
-        //$params ='?view=init_test&test=operas';
-        //header('Location:index.php'.$params);
         $this->db_connector->closeConnection($conn);
     }
     
