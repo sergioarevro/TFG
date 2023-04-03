@@ -559,6 +559,56 @@ input.ct-red + span + label + span.switch-right {
     display: block; 
     margin: 0 auto; 
   }
+  
+  .pishing-container{
+    margin: 20px auto 70px;
+    background-color: #fcfcfb;
+    border-radius: 8px;
+    color: #66615b;
+    /*max-width: 350px;*/
+    /*margin: 20px 0 70px;*/
+    min-height: 400px;
+    padding: 30px; 
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%; /* Ancho fijo */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .pishing-section{
+    //width: calc(100vw - 30px); 
+    border: 1px solid gray; /* Establecemos un borde sólido de 1px en gris */
+    width: 85%;
+    height: 450px;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  .pishing-container .title {
+    color: #B33C12;
+    text-align: center;
+    padding-bottom: 50px;
+  }
+
+   .pishing-container .btn {
+        margin-top: 20px; 
+        margin-bottom: 10px;
+   }
+  
+  .btn-pishing{
+      max-width: 100%;
+      display: inline-block;
+      margin-right: 20px;
+      margin-left: 20px;
+  }
+  
+  .btn-pishing-container{
+    display: flex; /* Utilizamos flexbox para alinear los botones horizontalmente */
+    justify-content: center; /* Centramos los botones horizontalmente */
+  }
 
 .btn-lg {
   font-size: 20px;
@@ -3000,12 +3050,12 @@ textarea.form-control {
     color: #333333;
 }
 .demo-header{
-    background-size: cover;
+    background-size: cover;  
     //background-color: #FF8F5E;
     background-color: #B2B2B2;
     background-position: center top;
     margin-top: -100px;
-    min-height: 92vh;
+    min-height: 72vh;
     //background-image: url("../images/city.jpg");
     background-image: url("../images/blackwall.jpg");
 }

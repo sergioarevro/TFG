@@ -96,20 +96,55 @@
                     header("Location: index.php?section=iq&action=show_quest&num=$quest_id");
                     break;
                     
-                }
-            
+                }           
         }
         if ($section == 'pishing'){
             switch ($action){
                 case 'start': 
-                    require_once VIEWS_PATH.'landing_pishing.php';
+                    require_once VIEWS_PATH.'landing_phishing.php';
                     break;
                 
                 case 'init_test':
-                    $test = $_POST['test'];
-                    require_once VIEWS_PATH.'landing_test?test=iq.php';
+                    //$test = $_POST['test'];
+                    error_log("Test pishing: $test");
+                    require_once VIEWS_PATH.'landing_test.php';
                     break;
             }
+        }
+        if ($section == 'mail'){
+            switch ($action){
+                case 'show_quest': 
+                    $num_quest = isset($_GET['num']) ? $_GET['num'] : '';
+                    //require_once MODELS_PATH.'mail_model.php';
+                    //$mail_model = new MailModel($db_connector);
+                    //$rows = $mail_model->getNumQuest();
+                    //$perc = ($num_quest/29)*100;
+                    $rows = 100;
+                    $perc = 0;
+                    $perc ++;
+                    if ($num_quest <= $rows){
+                        //$question = $mail_model->getQuestionbyID($num_quest); 
+                        $question = "$perc - Esto es una pregunta de prueba.";
+                        $text='mail';
+                        require_once VIEWS_PATH.'test_phishing_view.php';
+                        break;
+                    }else{
+                        header("Location: index.php?view=show_score&test=mail");
+                        break;
+                    }
+
+                    
+                case 'insert_answer':
+                    $quest_id = $_POST['quest_id'];
+                    $answer = $_POST['answer'];
+                    require_once MODELS_PATH.'mail_model.php';
+                    $mail_model = new MailModel($db_connector);
+                    $mail_model->insertAnswer($quest_id, $answer);
+                    $quest_id++;
+                    header("Location: index.php?section=mail&action=show_quest&num=$quest_id");
+                    break;
+                    
+                }           
         }
        
         if ($view){
@@ -126,6 +161,10 @@
                     //$test = $_POST['iq'];
                     $score = 100;
                     require_once VIEWS_PATH.'test_score_view.php';  
+                    break;
+                
+                case 'phishing':
+                    require_once VIEWS_PATH.'landing_phishing.php';
                     break;
             }
         }
