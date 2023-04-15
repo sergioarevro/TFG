@@ -227,6 +227,91 @@ input.ct-red + span.switch-left,
 input.ct-red + span + label + span.switch-right {
   background-color: #EB5E28; }
 
+/*************     Parte email    *********************/
+.email-header{
+    //border: 1px solid black;
+    padding: 5px;
+    height: 60px;
+}
+.email-info{
+    
+}
+
+.name-email{
+  color: #212121;
+  font-weight: 900;
+}
+
+.email-dir{
+    margin-left: .25rem;
+    font-size: 15px;
+    opacity: .5;
+    //display: none;
+}
+
+.email-hour{
+    color: #66615b;
+    opacity: .5;
+    font-size: 15px
+    margin-left: 2px;
+}
+
+.email-toggle{
+    //margin-left: .25rem;
+    font-size: 15px;
+    opacity: .5;
+    color: #66615b;
+    //margin-left: 15px;
+}
+
+.email-content-container{
+    background-color: #66615b;
+    opacity: .1;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    padding: 20px;
+    height: 330px;    
+}
+
+.email-content{
+    background-color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    padding: 20px;
+    height: 280px; 
+}
+
+.email-separator{
+  border-color: #66615b; 
+  border-width: 1px;
+}
+
+.email-content-style{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    opacity: 1;
+}
+
+.circle-red{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ef5350;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: white;
+}
+
+
+/*******************************************/
 .btn,
 .navbar .navbar-nav > li > a.btn {
   border-radius: 20px;
@@ -561,14 +646,14 @@ input.ct-red + span + label + span.switch-right {
   }
   
   .pishing-container{
-    margin: 20px auto 70px;
+    margin: 20px auto 10px;
     background-color: #fcfcfb;
     border-radius: 8px;
     color: #66615b;
     /*max-width: 350px;*/
     /*margin: 20px 0 70px;*/
     min-height: 400px;
-    padding: 30px; 
+    padding: 15px; 
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
@@ -579,7 +664,6 @@ input.ct-red + span + label + span.switch-right {
   }
   
   .pishing-section{
-    //width: calc(100vw - 30px); 
     border: 1px solid gray; /* Establecemos un borde sólido de 1px en gris */
     width: 85%;
     height: 450px;
@@ -1302,7 +1386,6 @@ textarea.form-control {
 
 .section-dark {
   background-color: #1a1817;
-  //background-color:#B2B2B2;
   color: #FFFFFF; }
 
 /*      Checkbox and radio         */
@@ -3051,12 +3134,10 @@ textarea.form-control {
 }
 .demo-header{
     background-size: cover;  
-    //background-color: #FF8F5E;
     background-color: #B2B2B2;
     background-position: center top;
     margin-top: -100px;
     min-height: 72vh;
-    //background-image: url("../images/city.jpg");
     background-image: url("../images/blackwall.jpg");
 }
 

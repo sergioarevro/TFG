@@ -8,7 +8,6 @@
     
      <div class="wrapper">
         <div class="register-background"> 
-            <!--<div class="filter-black"></div>-->
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 ">

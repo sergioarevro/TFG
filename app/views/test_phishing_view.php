@@ -15,13 +15,29 @@
                                 </div>
                             </div>
 
-                            <h3 class="title text-center col-md-12">Mail Pishing</h3>
+                            <h3 class="title text-center col-md-12">Mail Phishing</h3>
 
                             <div class="pishing-section text-center">
                                 <?php if ($text == '1') { ?>
                                 
                                 <?php }?> 
-                                <h1> Zona para crear los posibles Mail Phishing</h1>
+                                <div class="email-header text-left">
+                                    <div class="circle-red col-md-1">L</div>
+                                    <div class="email-info col-md-10">
+                                        <span class="name-email">Luís Gómez</span>
+                                        <span class="email-dir">‎&lt;luis.gomez8000@gmail.com&gt;</span>
+
+                                    </div>
+                                    <div class="email-hour text-right col-md-1"><?php echo date('H:i'); ?></div>
+                                    <a href="#" class="dropdown-toggle email-toggle text-left col-md-2" data-toggle="para mí" aria-expanded="false">para mí <b class="caret"></b></a>     
+                                </div>
+                                
+                                <div class="email-content-container">
+                                    <div class="email-content">
+                                        <p class="email-content-style text-left"> Zona para crear los posibles Mail Phishing<p>
+                                        <hr class="email-separator">
+                                    </div>
+                                </div>                            
                             </div>
                             <form id="mail_pishing" method="POST" action="index.php?section=pishing&action=insert_answer">
                                 <div class="btn-pishing-container">
