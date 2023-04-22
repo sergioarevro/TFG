@@ -386,6 +386,26 @@ input.ct-red + span + label + span.switch-right {
     
 .dropdown-content {
 }
+
+.dropbox-text{
+    opacity: 1; 
+    font-size: 15px; 
+    color: grey; 
+    height: auto; 
+    padding: 4px; 
+    text-align: justify;
+}
+
+.imagen-hover {
+  width: 200px;
+  height: 200px;
+  background-image: url('pdf-icon1.png');
+}
+
+.imagen-hover:hover {
+  background-image: url('pdf-icon2.png');
+}
+
 /*******************************************/
 .btn,
 .navbar .navbar-nav > li > a.btn {
@@ -747,6 +767,7 @@ input.ct-red + span + label + span.switch-right {
     padding: 10px;
     background-color: white;
     margin-bottom: 50px;
+    overflow: auto;
   }
   
   .pishing-container .title {

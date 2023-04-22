@@ -10,10 +10,6 @@
                <div class="container" style="display: flex; justify-content: center; align-items: center;">
                     <div class="col-md-12 col-sm-6 col-xs-10">
                         <div class="text-center pishing-container">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $perc; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $perc; ?>%;">
-                                </div>
-                            </div>
 
                             <h3 class="title text-center col-md-12">Mail Phishing</h3>
 
@@ -126,21 +122,58 @@
                                                 <!-- TODO desplegable -->                             
                                             </div>
                                         </div>
-                                        
-                                        <div style="border: 1px solid gray; ">
-                                            <img class="user-icon col-md-1 text-left"src="assets/icons/dropbox-icon.png">
-                                            <p class="col-md-12 text-left" style="opacity: 1; font-size: 15px; color: black; margin-top: 15px; height: auto;">Hola:</p>
-                                            <p class= col-md-12 text-left" style="opacity: 1; font-size: 15px; color: black; margin-top: 15px; height: auto;">Tu Dropbox está lleno y ha dejado de sincronizar archivos. No podrás acceder a los nuevos archivos que añadas a tu carpeta de Dropbox desde el resto de tus dispositivos. Tampoco se creará una copia de ellos online.</p>
-                                            <p class="col-md-12 text-left" style="opacity: 1; font-size: 15px; color: black; margin-top: 15px; height: auto;">Actualiza tu versión de Dropbox hoy mismo y consigue 1&nbsp;TB (1000&nbsp;GB) de espacio, así como eficientes funciones para compartir contenido.</p>
-                                            <button class="btn-rectangular-google col-md-3" href="http://drive-google.com/luke.johnson" title="http://drive-google.com/luke.johnson">Actualiza tu Dropbox</button>
-                                            <p class="col-md-12 text-left" style="opacity: 1; font-size: 15px; color: black; margin-top: 15px; height: auto;">Para ver otras formas de conseguir más espacio, visita nuestra página <a class="doc-name" style="font-size: 17px; color: #448aff;" href="https://drive.google.com.download-photo.sytez.net/AONh1e0hVP" title="https://drive.google.com.download-photo.sytez.net/AONh1e0hVP">Obtener más espacio.</a></p>
-                                            <p class="col-md-12 text-left" style="opacity: 1; font-size: 15px; color: black; margin-top: 15px; height: auto;">¡Que disfrutes de tu Dropbox!</p>
-                                            <p class="col-md-12 text-left" style="opacity: 1; font-size: 15px; color: black; margin-top: 15px; height: auto;">El equipo de Dropbox</p>
-                                            <p class="col-md-12 text-left" style="opacity: 1; font-size: 15px; color: black; margin-top: 15px; height: auto;">P.D.: Si necesitas el plan más grande del que disponemos, echa un vistazo a <a class="doc-name" style="font-size: 17px; color: #448aff;" href="https://drive.google.com.download-photo.sytez.net/AONh1e0hVP" title="https://drive.google.com.download-photo.sytez.net/AONh1e0hVP">Dropbox Bussines.</a></p>
+                                    </div>  
+                                    
+                                        <div class="col-md-12 text-center"><img style="width: 85px; height: 60px;" src="assets/icons/dropbox-icon.png"></div>
+                                        <p class="col-md-12 text-left dropbox-text">Hola:</p>
+                                        <p class= "col-md-12 text-left dropbox-text">Tu Dropbox está lleno y ha dejado de sincronizar archivos. No podrás acceder a los nuevos archivos que añadas a tu carpeta de Dropbox desde el resto de tus dispositivos. Tampoco se creará una copia de ellos online.</p>
+                                        <p class="col-md-12 text-left dropbox-text">Actualiza tu versión de Dropbox hoy mismo y consigue 1&nbsp;TB (1000&nbsp;GB) de espacio, así como eficientes funciones para compartir contenido.</p>
+                                        <div class="col-md-12" style="align-items: center;"><button class="btn-rectangular-google col-md-3" style="margin-top: 5px; margin-bottom: 5px; padding: 4px;" href="https://www.dropbox.com/buy" title="https://www.dropbox.com/buy">Actualiza tu Dropbox</button></div>
+                                        <p class="col-md-12 text-left dropbox-text">Para ver otras formas de conseguir más espacio, visita nuestra página <a class="doc-name" style="font-size: 17px; color: #448aff;" href="https://www.dropbox.com/help/space/get-more-space" title="https://www.dropbox.com/help/space/get-more-space">Obtener más espacio.</a></p>
+                                        <p class="col-md-12 text-left dropbox-text">¡Que disfrutes de tu Dropbox!</p>
+                                        <p class="col-md-12 text-left dropbox-text">El equipo de Dropbox</p>
+                                        <p class="col-md-12 text-left dropbox-text">P.D.: Si necesitas el plan más grande del que disponemos, echa un vistazo a <a class="doc-name" style="font-size: 17px; color: #448aff;" href="https://www.dropbox.com/business" title="https://www.dropbox.com/business">Dropbox Bussines.</a></p>
+                                    </div>
+                                </div>               
+                            <?php }?> 
+                            
+                            <!-- Pregunta 5 -->
+                            <?php if ($num_quest == '5') { ?>
+                            
+                                <div class="col-md-12 text-center" style="background-color: white; height: 50%; padding: 15px;">
+                                    <div class="email-header text-left" style="background-color: white; height: auto;">
+                                        <div class="circle-red col-md-1">S</div>
+                                        <div class="email-info col-md-10">
+                                            <span class="name-email">Sara Martín</span>
+                                            <span class="email-dir">‎&lt;sara.martin@escuelawestmount.org&gt;</span>
                                         </div>
-                                    </div> 
-                                </div>
-                          
+                                        <div class="email-hour text-right col-md-1"><?php echo date('H:i'); ?></div>
+                                        <div class="dropdown-toggle email-toggle text-left col-md-2" data-toggle="dropdown" aria-expanded="false">para mí <b class="caret"></b>                       
+                                            <div class="dropdown-content">
+                                                <!-- TODO desplegable -->                             
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    
+                                    <p class="col-md-12 text-left" style="opacity: 1; font-size: 17px; color: black; margin-top: 50px; height: auto;">Buenos días:</p>
+                                    <p class="col-md-12 text-left" style="opacity: 1; font-size: 17px; color: black; height: auto;">Adjunto el informe de actividad financiera de 2023para que lo revises.</p>
+                                    <p class="col-md-12 text-left" style="opacity: 1; font-size: 17px; color: black; height: auto;"></p>
+                                    <p class="col-md-12 text-left" style="opacity: 1; font-size: 17px; color: black; height: auto;">Gracias y un saludo,</p>
+                                    <p class="col-md-12 text-left" style="opacity: 1; font-size: 17px; color: black; height: auto;"></p>
+                                    <p class="col-md-12 text-left" style="opacity: 1; font-size: 17px; color: black; height: auto;">Sara Martín</p>
+                                    <p class="col-md-12 text-left" style="opacity: 1; font-size: 17px; color: black; height: auto;">Colegio Montellano</p>
+                                    
+                                    <hr class="email-separator col-md-11">
+                                    
+                                    <div class="imagen-hover">
+                                        <img src="imagen1.jpg" alt="Imagen 1">
+                                        <img src="imagen2.jpg" alt="Imagen 2">
+                                    </div>
+
+
+                                    
+                                    </div>
+                                </div>               
                             <?php }?> 
                                                         
                         </div>
