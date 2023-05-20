@@ -12,6 +12,14 @@
                         <div class="text-center pishing-container">
                             <div class="col-md-12 text-right">
                                 <p><?php echo "Modo $mode"; ?></p>
+                                <p>    <?php
+
+                                if ($num_quest == 4 || $num_quest == 8) {
+                                    echo "Solución: Legítimo";
+                                } else {
+                                    echo "Solución: Phishing";
+                                }
+                                ?></p>
                             </div>
                          
                             <h3 class="title text-center col-md-12">Test sobre Mail Phishing</h3>
@@ -42,20 +50,30 @@
                                             <li><span class="email-dir" style="margin-left: 20px;">asunto:&nbsp;</span><span class="name-email"> Presupuesto de departamento del 2023</span></li>
                                          </ul>    
                                    </div>
-	
                                 </div>
                                 
                                 <div class="email-content-container">
                                     <div class="email-content">
                                         <p class="email-content-style text-left" style="margin-left: 30px;">Luís Gómez ha compartido un enlace al siguiente documento:</p>
                                         
-                                        <a class="doc-name col-md-12 text-left" href="http://drive-google.com/luke.johnson" title="http://drive-google.com/luke.johnson"><img class="doc-icon col-md-1 text-left"src="assets/icons/doc-icon.png">Presupuesto de departamento del 2023.docx</a>
+                                        <div class="col-md-12 text-center">
+                                            <a class="doc-name col-md-11 text-left" href="http://drive-google.com/luke.johnson" title="http://drive-google.com/luke.johnson" style="margin-right: 0px;"><img class="doc-icon col-md-1 text-left"src="assets/icons/doc-icon.png">Presupuesto de departamento del 2023.docx</a>
+
+                                            <div id="dropdown" class="dropdown-li col-md-1">
+                                                <img src="assets/icons/alert-info.png" style="margin-left: -230px; margin-top: 5px; background-color: white; height: 35px; width: 35px;">                        
+                                                <ul class="dropdown" style="margin-left:-200px; width: 300px; height: auto;">
+                                                    <li>Si sitúas el cursor sobre este enlace o lo pulsas de manera prolongada, verás que dirige a un dominio parecido y no seguro: "drive-google.com".</li>
+                                                </ul>    
+                                            </div>
+                                        </div>
                                         <hr class="email-separator col-md-11">
                                         <div class="col-md-12">
                                             <img class="user-icon col-md-1 text-left"src="assets/icons/user-icon.png">
                                             <div class="email-content-style col-md-10 text-left">Hola. Aquí tienes el documento que querías. Dime si necesitas algo más.</div>
                                         </div>
                                         <button class="btn-rectangular-google col-md-3" style="margin-top:20px; margin-left: 30px;" href="http://drive-google.com/luke.johnson" title="http://drive-google.com/luke.johnson">Abrir en Documentos</button>
+
+
                                     </div>
                                 </div>
                                 <?php }?> 
@@ -64,33 +82,46 @@
                                 
                                 <div class="email-header text-left">
                                     <div class="circle-red col-md-1">M</div>
-                                    <div class="email-info col-md-10">
-                                        <span class="name-email">Mensaje de fax - No responder [administrador]</span>
-                                        <span class="email-dir">‎&lt;noreply@efacks.com&gt;</span>
-
+                                        <div class="email-info col-md-10">
+                                            <span class="name-email">Mensaje de fax - No responder [administrador]</span>
+                                            <span class="email-dir">‎&lt;noreply@efacks.com&gt;</span>
+                                        </div>
+                                    <div class="col-md-1">
+                                        <div class="email-hour text-right"><?php echo date('H:i'); ?></div>
                                     </div>
-                                    <div class="email-hour text-right col-md-1"><?php echo date('H:i'); ?></div>
-                                    
-                                    <div id="dropdown" class="dropdown-li col-md-11">para mí<button class="drop-button" style="margin-left:5px; background-color: white; border:none;"><img src="assets/icons/dropdown-icon.png"></button>                              
-                                        <ul class="dropdown">
-                                            <li><span class="email-dir" style="margin-left: 20px;">de:&nbsp;</span><span class="name-email">Mensaje de fax - No responder [administrador] ‎&lt;noreply@efacks.com&gt;</span></li>
-                                            <li><span class="email-dir" style="margin-left: 20px;">para:&nbsp;</span><span class="name-email"> Usuario ‎&lt;user123@gmail.com&gt</span></li>
-                                            <li><span class="email-dir" style="margin-left: 20px;">fecha:&nbsp;</span><span class="name-email">                                                         
-                                                <?php
-                                                    $fecha = new DateTime();
-                                                    $fecha_formateada = strftime('%A, %e de %B de %Y, %H:%M:%S', $fecha->getTimestamp()); 
-                                                    echo $fecha_formateada; 
-                                                ?></span></li>
-                                            <li><span class="email-dir" style="margin-left: 20px;">asunto:&nbsp;</span><span class="name-email">Has recibido un fax de 1 página</span></li>
+                                    <div>
+                                        <div id="dropdown" class="dropdown-li col-md-2">para mí<button class="drop-button" style="margin-left:5px; background-color: white; border:none;"><img src="assets/icons/dropdown-icon.png"></button>                              
+                                            <ul class="dropdown" style="width: 450px; height: auto;">
+                                                <li><span class="email-dir" style="margin-left: 20px;">de:&nbsp;</span><span class="name-email">Mensaje de fax - No responder [administrador] ‎&lt;noreply@efacks.com&gt;</span></li>
+                                                <li><span class="email-dir" style="margin-left: 20px;">para:&nbsp;</span><span class="name-email"> Usuario ‎&lt;user123@gmail.com&gt</span></li>
+                                                <li><span class="email-dir" style="margin-left: 20px;">fecha:&nbsp;</span><span class="name-email">                                                         
+                                                    <?php
+                                                        $fecha = new DateTime();
+                                                        $fecha_formateada = strftime('%A, %e de %B de %Y, %H:%M:%S', $fecha->getTimestamp()); 
+                                                        echo $fecha_formateada; 
+                                                    ?></span></li>
+                                                <li><span class="email-dir" style="margin-left: 20px;">asunto:&nbsp;</span><span class="name-email">Has recibido un fax de 1 página</span></li>
+                                                </ul>    
+                                        </div> 
+                                        <div id="dropdown" class="dropdown-li col-md-1">
+                                            <img src="assets/icons/alert-info.png" style="margin-left: -50px; background-color: white; height: 35px; width: 35px;">                        
+                                            <ul class="dropdown" style="margin-left:-200px; width: 300px; height: auto;">
+                                                 <li>La dirección del remitente es "efacks.com" (está mal escrita). En la siguiente pregunta, prueba a analizar el encabezado para ver más detalles. </li>
                                             </ul>    
-                                    </div> 
-	
+                                        </div>
+                                    </div>
                                 </div>
                                 
                                 <div class="email-content-container">
                                     <div class="email-fax-content">
                                         <p class="email-content-style text-left" style="margin-left: 15px; opacity: 1; font-size: 16px;">Recibiste un fax de 1 página el <?php echo date("d/m/y, H:i");; ?> </p>
-                                        <a class="col-md-5 text-left" href="http://efax.hosting.com.mailru382.co/efaxdelivery/2017Dk4h325RE3" title="http://efax.hosting.com.mailru382.co/efaxdelivery/2017Dk4h325RE3" style="color: #448aff; font-size: 16px; font-weight: 900;">Ver este fax online</a>
+                                        <a class="col-md-3 text-left" href="http://efax.hosting.com.mailru382.co/efaxdelivery/2017Dk4h325RE3" title="http://efax.hosting.com.mailru382.co/efaxdelivery/2017Dk4h325RE3" style="color: #448aff; font-size: 16px; font-weight: 900;">Ver este fax online</a>
+                                        <div id="dropdown" class="dropdown-li text-left">
+                                            <img src="assets/icons/alert-info.png" style="margin-bottom: 5px;margin-left: -40px; background-color: white; height: 35px; width: 35px;">                        
+                                            <ul class="dropdown" style="width: 300px; height: auto;">
+                                                 <li> En realidad, el enlace dirige a "mailru382.co"; lo puedes ver al final del nombre de dominio. No es para nada lo que cabría esperar. </li>
+                                            </ul>    
+                                        </div>
                                     </div> 
                                     <hr class="email-separator col-md-11">
                                     <div class="text-center" style="text-align: center;">
@@ -129,7 +160,13 @@
                                         </div> 
                                     </div> 
                                     <div>
-                                        <p class="col-md-12 text-left" style="opacity: 1; font-size: 17px; color: black; margin-top: 15px; height: auto;">Hola, ¿te acuerdas de <a class="doc-name" style="font-size: 17px; color: #448aff;" href="https://drive.google.com.download-photo.sytez.net/AONh1e0hVP" title="https://drive.google.com.download-photo.sytez.net/AONh1e0hVP">ESTA FOTO</a>?</p>
+                                        <p class="text-left col-md-5" style="opacity: 1; font-size: 17px; color: black; margin-top: 15px; height: auto;">Hola, ¿te acuerdas de <a class="doc-name" style="font-size: 17px; color: #448aff;" href="https://drive.google.com.download-photo.sytez.net/AONh1e0hVP" title="https://drive.google.com.download-photo.sytez.net/AONh1e0hVP">ESTA FOTO</a>?</p>
+                                        <div id="dropdown" class="dropdown-li text-left col-md-1">
+                                            <img src="assets/icons/alert-info.png" style="margin-left: -50px; margin-top: 15px; background-color: white; height: 35px; width: 35px;">                        
+                                            <ul class="dropdown" style="width: 300px; height: auto;">
+                                                 <li>  En realidad, la URL del enlace apunta a "sytez.net", no a Google Drive.</li>
+                                            </ul>    
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -145,29 +182,45 @@
                                             <span class="name-email">DropBox</span>
                                             <span class="email-dir">‎&lt;no-reply@dropboxmail.com&gt;</span>
                                         </div>
-                                        <div class="email-hour text-right col-md-1"><?php echo date('H:i'); ?></div>
-                                        
-                                        <div id="dropdown" class="dropdown-li col-md-11">para mí<button class="drop-button" style="margin-left:5px; background-color: white; border:none;"><img src="assets/icons/dropdown-icon.png"></button>                              
-                                            <ul class="dropdown">
-                                                <li><span class="email-dir" style="margin-left: 20px;">de:&nbsp;</span><span class="name-email">DropBox &lt;no-reply@dropboxmail.com&gt;</span></li>
-                                                <li><span class="email-dir" style="margin-left: 20px;">para:&nbsp;</span><span class="name-email"> Usuario ‎&lt;user123@gmail.com&gt</span></li>
-                                                <li><span class="email-dir" style="margin-left: 20px;">fecha:&nbsp;</span><span class="name-email">                                                         
-                                                    <?php
-                                                        $fecha = new DateTime();
-                                                        $fecha_formateada = strftime('%A, %e de %B de %Y, %H:%M:%S', $fecha->getTimestamp()); 
-                                                        echo $fecha_formateada; 
-                                                    ?></span></li>
-                                                <li><span class="email-dir" style="margin-left: 20px;">asunto:&nbsp;</span><span class="name-email">Tu Dropbox ha dejado de sincronizarse</span></li>
-                                                </ul>    
-                                        </div> 
-                                        
-                                    </div>  
+                                        <div class="col-md-1">
+                                            <div class="email-hour text-right"><?php echo date('H:i'); ?></div>
+                                        </div>
+                                        <div class="col-md-11">
+                                            <div id="dropdown" class="dropdown-li col-md-2">para mí<button class="drop-button" style="margin-left:5px; background-color: white; border:none;"><img src="assets/icons/dropdown-icon.png"></button>                              
+                                                <ul class="dropdown" style="width: 450px; height: auto;">
+                                                    <li><span class="email-dir" style="margin-left: 20px;">de:&nbsp;</span><span class="name-email">DropBox &lt;no-reply@dropboxmail.com&gt;</span></li>
+                                                    <li><span class="email-dir" style="margin-left: 20px;">para:&nbsp;</span><span class="name-email"> Usuario ‎&lt;user123@gmail.com&gt</span></li>
+                                                    <li><span class="email-dir" style="margin-left: 20px;">fecha:&nbsp;</span><span class="name-email">                                                         
+                                                        <?php
+                                                            $fecha = new DateTime();
+                                                            $fecha_formateada = strftime('%A, %e de %B de %Y, %H:%M:%S', $fecha->getTimestamp()); 
+                                                            echo $fecha_formateada; 
+                                                        ?></span></li>
+                                                    <li><span class="email-dir" style="margin-left: 20px;">asunto:&nbsp;</span><span class="name-email">Tu Dropbox ha dejado de sincronizarse</span></li>
+                                                    </ul>    
+                                            </div>
+                                            <div id="dropdown" class="dropdown-li">
+                                                <img src="assets/icons/alert-info.png" style="margin-left: 5px; background-color: white; height: 35px; width: 35px;">                        
+                                                <ul class="dropdown" style="margin-left:0px; width: 300px; height: auto;">
+                                                    <li>Si buscas "dropboxmail.com", verás rápidamente que es legítimo. </li>
+                                                </ul>
+                                            </div> 
+                                        </div>
+                                    </div>
+                    
                                     <div class="col-md-11" style="border: 1px solid grey; width:auto; height:90%; padding: 10px; margin: 20px;">
                                         <div class="col-md-12 text-center"><img style="width: 85px; height: 60px;" src="assets/icons/dropbox-icon.png"></div>
                                             <p class="col-md-12 text-left dropbox-text">Hola:</p>
                                             <p class= "col-md-12 text-left dropbox-text">Tu Dropbox está lleno y ha dejado de sincronizar archivos. No podrás acceder a los nuevos archivos que añadas a tu carpeta de Dropbox desde el resto de tus dispositivos. Tampoco se creará una copia de ellos online.</p>
                                             <p class="col-md-12 text-left dropbox-text">Actualiza tu versión de Dropbox hoy mismo y consigue 1&nbsp;TB (1000&nbsp;GB) de espacio, así como eficientes funciones para compartir contenido.</p>
-                                            <div class="col-md-12" style="align-items: center; display:flex; justify-content: center;"><button class="btn-rectangular-google col-md-3" style="margin-top: 5px; margin-bottom: 5px; padding: 4px;" href="https://www.dropbox.com/buy" title="https://www.dropbox.com/buy">Actualiza tu Dropbox</button></div>
+                                            <div class="col-md-12" style="align-items: center; display:flex; justify-content: center;"><button class="btn-rectangular-google col-md-3" style="margin-top: 5px; margin-bottom: 5px; padding: 4px;" href="https://www.dropbox.com/buy" title="https://www.dropbox.com/buy">Actualiza tu Dropbox</button>
+                                                                                    <div id="dropdown" class="dropdown-li">
+                                            <img src="assets/icons/alert-info.png" style="margin-left: 5px; background-color: white; height: 35px; width: 35px;">                        
+                                            <ul class="dropdown" style="margin-left:0px; width: 300px; height: auto;">
+                                                <li> La URL es un enlace legítimo y seguro a "dropbox.com".</li>
+                                            </ul>
+                                        </div>
+                                            </div>
                                             <p class="col-md-12 text-left dropbox-text">Para ver otras formas de conseguir más espacio, visita nuestra página <a class="doc-name" style="font-size: 17px; color: #448aff;" href="https://www.dropbox.com/help/space/get-more-space" title="https://www.dropbox.com/help/space/get-more-space">Obtener más espacio.</a></p>
                                             <p class="col-md-12 text-left dropbox-text">¡Que disfrutes de tu Dropbox!</p>
                                             <p class="col-md-12 text-left dropbox-text">El equipo de Dropbox</p>
@@ -187,10 +240,12 @@
                                             <span class="name-email">Sara Martín</span>
                                             <span class="email-dir">‎&lt;sara.martin@escuelawestmount.org&gt;</span>
                                         </div>
-                                        <div class="email-hour text-right col-md-1"><?php echo date('H:i'); ?></div>
-                                        
-                                        <div id="dropdown" class="dropdown-li col-md-11">para mí<button class="drop-button" style="margin-left:5px; background-color: white; border:none;"><img src="assets/icons/dropdown-icon.png"></button>                              
-                                            <ul class="dropdown">
+                                        <div class="col-md-1">
+                                            <div class="email-hour text-right"><?php echo date('H:i'); ?></div>
+                                        </div>
+                                        <div>
+                                            <div id="dropdown" class="dropdown-li col-md-2">para mí<button class="drop-button" style="margin-left:5px; background-color: white; border:none;"><img src="assets/icons/dropdown-icon.png"></button>                              
+                                                <ul class="dropdown" style="width: 450px; height: auto;">
                                                 <li><span class="email-dir" style="margin-left: 20px;">de:&nbsp;</span><span class="name-email">Sara Martín ‎&lt;sara.martin@escuelawestmount.org&gt;</span></li>
                                                 <li><span class="email-dir" style="margin-left: 20px;">para:&nbsp;</span><span class="name-email"> Usuario ‎&lt;user123@gmail.com&gt</span></li>
                                                 <li><span class="email-dir" style="margin-left: 20px;">fecha:&nbsp;</span><span class="name-email">                                                         
@@ -201,10 +256,16 @@
                                                     ?></span></li>
                                                 <li><span class="email-dir" style="margin-left: 20px;">asunto:&nbsp;</span><span class="name-email">Informe de actividad financiera del 2023</span></li>
                                                 </ul>    
-                                        </div> 
+                                            </div> 
+                                            <div id="dropdown" class="dropdown-li col-md-1">
+                                                <img src="assets/icons/alert-info.png" style="margin-left: -50px; background-color: white; height: 35px; width: 35px;">                        
+                                                <ul class="dropdown" style="margin-left:-200px; width: 320px; height: auto;">
+                                                     <li>La dirección del remitente es ligeramente diferente a la que has visto anteriormente: "sara.martin@centrowestmount.org".</li>
+                                                </ul>    
+                                            </div>
+                                        </div>
 
-                                    </div>  
-                                    
+                                    </div> 
                                     <div>
                                         <p class="col-md-12 text-left" style="opacity: 1; font-size: 17px; color: black; margin-top: 28px; line-height: 0.8;">Buenos días:</p>
                                         <p class="col-md-12 text-left" style="opacity: 1; font-size: 17px; color: black; line-height: 0.8;">Adjunto el informe de actividad financiera de 2023 para que lo revises.</p>
@@ -221,6 +282,12 @@
                                         <img class="icono1" src="assets/icons/pdf-icon1.png" alt="Icono pdf 1">
                                         <img class="icono2" src="assets/icons/pdf-icon2.png" alt="Icono pdf 2">
                                     </div>
+                                    <div id="dropdown" class="dropdown-li col-md-12">
+                                        <img src="assets/icons/alert-info.png" style="margin-left: -400px; background-color: white; height: 35px; width: 35px;">                        
+                                        <ul class="dropdown" style="margin-left:200px; width: 320px; height: auto;">
+                                             <li> Ten cuidado al abrir archivos PDF, sobre todo si no los esperas. </li>
+                                        </ul>    
+                                    </div>
                                 </div>               
                             <?php }?> 
                         
@@ -234,10 +301,12 @@
                                             <span class="name-email">Google</span>
                                             <span class="email-dir">‎&lt;no-reply@google.support&gt;</span>
                                         </div>
-                                        <div class="email-hour text-right col-md-1"><?php echo date('H:i'); ?></div>
-                                        
-                                        <div id="dropdown" class="dropdown-li col-md-11">para mí<button class="drop-button" style="margin-left:5px; background-color: white; border:none;"><img src="assets/icons/dropdown-icon.png"></button>                              
-                                            <ul class="dropdown">
+                                        <div class="col-md-1">
+                                            <div class="email-hour text-right"><?php echo date('H:i'); ?></div>
+                                        </div>
+                                        <div>
+                                            <div id="dropdown" class="dropdown-li col-md-2">para mí<button class="drop-button" style="margin-left:5px; background-color: white; border:none;"><img src="assets/icons/dropdown-icon.png"></button>                              
+                                                <ul class="dropdown" style="width: 450px; height: auto;">
                                                 <li><span class="email-dir" style="margin-left: 20px;">de:&nbsp;</span><span class="name-email">Google ‎&lt;no-reply@google.support&gt;</span></li>
                                                 <li><span class="email-dir" style="margin-left: 20px;">para:&nbsp;</span><span class="name-email"> Usuario ‎&lt;user123@gmail.com&gt</span></li>
                                                 <li><span class="email-dir" style="margin-left: 20px;">fecha:&nbsp;</span><span class="name-email">                                                         
@@ -248,8 +317,16 @@
                                                     ?></span></li>
                                                 <li><span class="email-dir" style="margin-left: 20px;">asunto:&nbsp;</span><span class="name-email">Alguien tiene tu contraseña</span></li>
                                                 </ul>    
-                                        </div> 
-                                    </div>
+                                            </div> 
+                                            <div id="dropdown" class="dropdown-li col-md-1">
+                                                <img src="assets/icons/alert-info.png" style="margin-left: -50px; background-color: white; height: 35px; width: 35px;">                        
+                                                <ul class="dropdown" style="margin-left:-200px; width: 320px; height: auto;">
+                                                     <li>La dirección de remitente "google.support" no se utiliza.</li>
+                                                </ul>    
+                                            </div>
+                                        </div>
+
+                                    </div> 
                                     
                                     <div>
                                         <div class="pass-alert col-md-12">
@@ -277,6 +354,12 @@
                                             </div>
                                             <p class="col-md-12 text-left" style="opacity: 1; font-size: 16px; color: black; height: auto; margin-top: 15px;">Google ha detenido este intento de inicio de sesión. Debes cambiar tu contraseña de inmediato.</p>
                                             <button class="btn-rectangular-google col-md-4" style="font-size:14px; margin-left: 10px; margin-top: 10px;" href="http://myaccount.google.com-securitysettingpage.ml-security.org/signonoptions/" title="http://myaccount.google.com-securitysettingpage.ml-security.org/signonoptions/">CAMBIAR CONTRASEÑA</button>
+                                            <div id="dropdown" class="dropdown-li col-md-1">
+                                                <img src="assets/icons/alert-info.png" style="margin-left: -50px; background-color: grey; height: 35px; width: 35px; margin-top: 10px;">                        
+                                                <ul class="dropdown" style="margin-left:-200px; width: 320px; height: auto;">
+                                                     <li>Este enlace apunta a un subdominio de "ml-security.org", no de Google.</li>
+                                                </ul>    
+                                            </div>
                                             <p class="col-md-12 text-left" style="opacity: 1; font-size: 16px; color: black; height: auto; margin-top: 15px;"></p>
                                             <p class="col-md-12 text-left" style="opacity: 1; font-size: 16px; color: black; height: auto;">Un saludo,</p>
                                             <p class="col-md-12 text-left" style="opacity: 1; font-size: 16px; color: black; height: auto;"></p>
@@ -295,10 +378,12 @@
                                             <span class="name-email">Google</span>
                                             <span class="email-dir">‎&lt;no-reply@google.support&gt;</span>
                                         </div>
-                                        <div class="email-hour text-right col-md-1"><?php echo date('H:i'); ?></div>
-                                        
-                                        <div id="dropdown" class="dropdown-li col-md-11">para mí<button class="drop-button" style="margin-left:5px; background-color: white; border:none;"><img src="assets/icons/dropdown-icon.png"></button>                              
-                                            <ul class="dropdown">
+                                        <div class="col-md-1">
+                                            <div class="email-hour text-right"><?php echo date('H:i'); ?></div>
+                                        </div>
+                                        <div>
+                                            <div id="dropdown" class="dropdown-li col-md-2">para mí<button class="drop-button" style="margin-left:5px; background-color: white; border:none;"><img src="assets/icons/dropdown-icon.png"></button>                              
+                                                <ul class="dropdown" style="width: 450px; height: auto;">
                                                 <li><span class="email-dir" style="margin-left: 20px;">de:&nbsp;</span><span class="name-email">Google ‎&lt;no-reply@google.support&gt;</span></li>
                                                 <li><span class="email-dir" style="margin-left: 20px;">para:&nbsp;</span><span class="name-email"> Usuario ‎&lt;user123@gmail.com&gt</span></li>
                                                 <li><span class="email-dir" style="margin-left: 20px;">fecha:&nbsp;</span><span class="name-email">                                                         
@@ -309,7 +394,15 @@
                                                     ?></span></li>
                                                 <li><span class="email-dir" style="margin-left: 20px;">asunto:&nbsp;</span><span class="name-email">Alguien tiene tu contraseña</span></li>
                                                 </ul>    
-                                        </div> 
+                                            </div> 
+                                            <div id="dropdown" class="dropdown-li col-md-1">
+                                                <img src="assets/icons/alert-info.png" style="margin-left: -50px; background-color: white; height: 35px; width: 35px;">                        
+                                                <ul class="dropdown" style="margin-left:-200px; width: 320px; height: auto;">
+                                                     <li>Al igual que en la pregunta anterior, la dirección "google.support" no se utiliza.</li>
+                                                </ul>    
+                                            </div>
+                                        </div>
+
                                     </div>
                                     
                                     <div>
@@ -323,6 +416,12 @@
                                                 No obstante, si consiguen su objetivo en algún momento, podrán acceder a tus datos o realizar otras acciones con tu cuenta. Para mejorar tu seguridad teniendo en cuenta tu configuración actual, te recomendamos lo siguiente:                                              
                                             </p>
                                             <a href="https://google.com/amp/tinyurl.com/y7u8ewlr" class="col-md-3 text-left" style="opacity: 1; font-size: 17px; color: #448aff; font-weight: bold; margin-top: 10px; margin-bottom: 10px;">Cambiar contraseña</a>
+                                            <div id="dropdown" class="dropdown-li col-md-1" style="display: inline-block; position: relative;">
+                                                <img src="assets/icons/alert-info.png" style="margin-left: -50px; background-color: white; height: 35px; width: 35px;">                        
+                                                <ul class="dropdown" style="width: 320px; height: auto; position: absolute; top: -40px; left: 40px;">
+                                                    <li>Este caso era complicado; el enlace en realidad redirige a una página de "tinyurl.com".</li>
+                                                </ul>    
+                                            </div>
                                         </div>                          
                                     </div>
                                 </div>               
@@ -336,14 +435,30 @@
                                         <p class="col-md-12 text-left" style="opacity: 1; font-size: 26px; color: black; font-weight: bold; margin-left: 15px; margin-bottom: 0px;">Hola, José</p>
                                         <p class="col-md-12 text-left" style="opacity: 1; font-size: 16px; color: black; font-weight: bold; margin-left: 15px; margin-top: 0px;">jose1234@gmail.com</p>
                                         <p class="col-md-12 text-left" style="opacity: 1; font-size: 18px; color: black; height: auto;"></p>
-                                        <p class="col-md-12 text-left" style="opacity: 1; font-size: 18px; color: black; height: auto; font-weight: bold; margin-left: 15px;"> <a class="mostrar-mensaje" style="color: #448aff;" href="">TripIt</a> quiere</p>
-
+                                        <div clas="col-md-12">
+                                            <p class="col-md-5 text-left" style="opacity: 1; font-size: 18px; color: black; height: auto; font-weight: bold; margin-left: 15px;"> <a class="mostrar-mensaje" style="color: #448aff;" href="">TripIt</a> quiere</p>
+                                            <div id="dropdown" class="dropdown-li col-md-1">
+                                                <img src="assets/icons/alert-info.png" style="margin-left: -75px; background-color: grey; height: 35px; width: 35px; top: -10px;">                        
+                                                <ul class="dropdown" style="margin-left:-200px; width: 320px; height: auto;">
+                                                     <li> Aquí se muestra el nombre de la aplicación que solicita permiso, aunque debes hacer clic en ella para asegurarte de que el resto de los datos sean correctos. </li>
+                                                </ul>    
+                                            </div>
+                                        </div>
                                         
-                                        <div class="col-md-11 text-center" style="margin-top:15px; margin-bottom: 15px; display:flex;">
+                                        <div class="col-md-10 text-center" style="margin-top:15px; margin-bottom: 15px; display:flex;">
                                             <div class="col-md-1 text-left"style="margin-right: 15px;"><img src="assets/icons/gmail-icon.png" style="width: 40px; height: 30px;"></div>
-                                            <p class="col-md-9 text-left" style="opacity: 1; font-size: 18px; color: black; height: auto;">Consultar tus mensajes de correo electrónico y la configuración</p>
-                                            <div class="col-md-1 text-left" style="margint-left: 5px;"><img src="assets/icons/info-icon.png"style="width: 25px; height: 25px;"></div>
                                             
+                                            <p class="col-md-10 text-left" style="opacity: 1; font-size: 18px; color: black; height: auto;">Consultar tus mensajes de correo electrónico y la configuración</p>
+                                            <div class="col-md-2" style="margin-left: 10px;">
+                                                <div class="col-md-1"><img src="assets/icons/info-icon.png"style="width: 25px; height: 25px;"></div>
+                                                    <div id="dropdown" class="dropdown-li col-md-1">
+                                                        <img src="assets/icons/alert-info.png" style="margin-left:-5px; background-color: white; height: 35px; width: 35px;">                        
+                                                        <ul class="dropdown" style="width: 320px; height: auto;">
+                                                            <li> Aquí se indica qué podrá hacer el servicio solicitante. Lee la información detenidamente antes de permitir el acceso. </li>
+                                                        </ul>    
+                                                    </div>
+                                                
+                                            </div>
                                             <div class="pantalla-superpuesta col-md-12">
                                                 <div class="mensaje">
                                                     <p class="col-md-12 text-left" style="opacity: 1; font-size: 18px; color: black; height: auto; font-weight: bold;">Información para desarrolladores</p>
@@ -352,7 +467,6 @@
                                                     <div id="cerrar-mensaje" class="btn-rectangular-google-inv col-md-12 cerrar-mensaje text-right" style="font-size:16px; margin-top: 10px; font-weight: bold;" href="">ENTENDIDO</div> 
                                                 </div>
                                             </div>
-                                        
                                         </div>
                                         <div>
                                         <p class="col-md-12 text-left" style="opacity: 1; font-size: 18px; color: black; height: auto; font-weight: bold; margin-left: 15px;">¿Das permiso a TripIt para hacer esto?</p> 
@@ -369,54 +483,13 @@
                             <?php }?>                         
                             
                         </div>
-                            <?php if ($mode == 'experimento') { ?>
-                                <form id="mail_pishing" method="POST" action="index.php?section=mail&action=insert_answer&mode=<?php echo "$mode"; ?>">
-                                    <div class="btn-pishing-container">
-                                        <input type="hidden" name="quest_id" value="<?php echo $num_quest; ?>">
-                                        <button class="btn btn-block btn-send btn-pishing" type="submit" name="answer" value="phishing"> Phishing </button>
-                                        <button class="btn btn-block btn-send btn-pishing" type="submit" name="answer" value="legitimo"> Legítimo </button>
-                                    </div>
-                                </form>
-                            <?php }?>
-                        
-                            <?php if ($mode == 'entrenamiento') { ?>
-                            <form id="mail_pishing" method="POST" action="index.php?section=mail&action=insert_answer&mode=<?php echo "$mode"; ?>">
+                            
+                            <form id="mail_pishing" method="POST" action="index.php?section=mail&action=show_next&num=<?php echo "$num_quest"; ?>&mode=<?php echo "$mode"; ?>">
                                 <div class="btn-pishing-container">
                                     <input type="hidden" name="quest_id" value="<?php echo $num_quest; ?>">
-                                    <button class="btn btn-block btn-send btn-pishing mostrar-popup" type="submit" name="answer" value="phishing"> Phishing </button>
-                                    <button class="btn btn-block btn-send btn-pishing mostrar-popup" type="submit" name="answer" value="legitimo"> Legítimo </button>
+                                    <button class="btn btn-block btn-send btn-pishing " type="submit" name="answer" value="phishing"> Continuar </button>
                                 </div>
                             </form>
-
-                            <div id="myPopup" class="pop-up">
-                                <div class="explanation">
-                                    <p>Texto de prueba</p>
-                                    <div id="close-explanation" class="btn btn-block btn-send btn-pishing">Continuar</div>
-                                </div>
-                            </div>
-
-                            <script>
-                                /*document.addEventListener("DOMContentLoaded", function() {
-                                    // Seleccionar los elementos relevantes
-                                    var enlaces = document.querySelectorAll('.mostrar-popup');
-                                    var pantallaSuperpuesta = document.getElementById('myPopup');
-                                    var cerrar = document.getElementById('close-explanation');
-
-                                    // Mostrar la pantalla superpuesta cuando se hace clic en cualquiera de los enlaces
-                                    enlaces.forEach(function(enlace) {
-                                        enlace.addEventListener('click', function(event) {
-                                            event.preventDefault();
-                                            pantallaSuperpuesta.style.display = 'block';
-                                        });
-                                    });
-
-                                    // Cerrar la pantalla superpuesta al hacer clic en el botón de cerrar
-                                    cerrar.addEventListener('click', function() {
-                                        pantallaSuperpuesta.style.display = 'none';
-                                    });
-                                });*/
-                            </script>
-                            <?php }?>
                     </div>
                 </div>
             </div>     

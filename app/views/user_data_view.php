@@ -11,7 +11,7 @@
                         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 ">
                             <div class="register-card">
                                 <h3 class="title">Información personal</h3>
-                                    <form clas= "register-form" action="/TFG/index.php?section=users&action=store" method="POST">
+                                    <form clas= "register-form" action="/TFG/index.php?section=users&action=store_aswer" method="POST">
                                         <label for="sex">Sexo </label>
                                         <select id="sex" name="sex" required oninvalid="invalidMsg(event)" title="Sexo">
                                             <option value=""></option>

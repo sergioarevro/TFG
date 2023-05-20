@@ -13,7 +13,7 @@ class OperasModel{
     
     public function getAllQuestions() {
         $conn = $this->db_connector->getConnection();
-        $sql = "SELECT id, quest_esp FROM questions";
+        $sql = "SELECT id, quest_esp FROM questions_operas";
         $result = mysqli_query($this->conn, $sql);     
         
         $questions = array();
@@ -37,7 +37,7 @@ class OperasModel{
     
     public function getQuestionbyID($id){
         $conn = $this->db_connector->getConnection();
-        $sql = "SELECT id, quest_esp FROM questions WHERE id = ?";
+        $sql = "SELECT id, quest_esp FROM questions_operas WHERE id = ?";
         $stmt = mysqli_prepare($conn, $sql);
 
         mysqli_stmt_bind_param($stmt, "i", $id);
@@ -60,19 +60,26 @@ class OperasModel{
         $conn = $this->db_connector->getConnection();
         $user_id = $_SESSION['user_id'];
 
-        $sql = "INSERT INTO answers (id_user, id_question, answer) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO answers_operas (id_user, id_question, answer) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("iii", $user_id, $question_id, $answer);
-        $stmt->execute();
-
         
+        if (!$stmt) {
+            error_log("Prepare error:  . $conn->error");
+            return;
+        }
+        $stmt->bind_param("iii", $user_id, $question_id, $answer);
+        if (!$stmt->execute()) {
+            error_log("Execution error:  . $stmt->error");
+            return;
+        }
+
         $this->db_connector->closeConnection($conn);
     }
     
     public function getNumQuest(){
         $conn = $this->db_connector->getConnection();
 
-        $sql = "SELECT COUNT(*) as total FROM questions";
+        $sql = "SELECT COUNT(*) as total FROM questions_operas";
 
         $result = mysqli_query($conn, $sql);
 
@@ -86,6 +93,19 @@ class OperasModel{
         $this->db_connector->closeConnection($conn);
         
         return $rows;
+    }
+    
+    /*
+     * Función que calcula la puntuación total del test y la guarda en la bd
+     */
+    public function setFinalScore(){
+        $conn = $this->db_connector->getConnection();
+        $id_user = $_SESSION['user_id'];
+        
+        
+      //TODO
+        
+        $this->db_connector->closeConnection($conn);;
     }
     
     public function execute($conn,$sql) {

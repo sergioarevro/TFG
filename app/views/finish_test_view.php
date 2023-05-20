@@ -12,11 +12,12 @@
                     <div class="row">
                         <div class="col-md-12 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 ">
                             <div class="register-card text-center">
-                                <h2 class='col-md-12'>Test <?php echo strtoupper($test); ?></h2>
-                                <h3>Has finalizado el test de IQ, tu IQ es de <?php echo $score; ?></h3>
-                                <h3>Haz click en continuar para ir al siguiente módulo</h3>
+                                <h2 class='col-md-12'>Tests Finalizados</h2>
+                                <h3>Gracias por participar.</h3>
                                 
-                                <a class='col-md-12' href="index.php?view=phishing"><button class="btn btn-block btn-send">Continuar</button></a>
+                                <h3>Pulsa continuar para ir a la página de Inicio</h3>
+                                
+                                <a class='col-md-12' href="index.php"><button class="btn btn-block btn-send">Continuar</button></a>
                          </div>
                      </div>
                  </div>

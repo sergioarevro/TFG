@@ -2,8 +2,12 @@
 <html>
     <?php include "head.html"; ?>
      <title>Test <?php echo $text; ?></title>
-<body>    
+<body>
+
     <?php include "header.html"; ?>
+    <script>
+        
+    </script>
 
     <div class="wrapper">
         <div class="register-background"> 
@@ -11,10 +15,6 @@
                     <div class="row">
                         <div class="col-md-12 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 ">
                             <div class="register-card text-center">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $perc; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $perc; ?>%;">
-                                        </div>
-                                    </div>
                                     
                                     <?php if ($text == 'operas') { ?>
                                             <h3 class="title text-center col-md-12">Test Operas</h3>
@@ -35,7 +35,7 @@
                                            
                                     <?php if ($text == 'iq') { ?>
                                             <h3 class="title text-center col-md-12">Test IQ</h3>
-                                                <form id="test_operas" method="POST" action="index.php?section=iq&action=insert_answer">
+                                                <form id="test_iq" method="POST" action="index.php?section=iq&action=insert_answer">
                                                     <img class='image col-md-12' src='<?php echo $question->path_q; ?>' class='center-block'>
                                                     <img class='image col-md-12' src='<?php echo $question->path_a; ?>' class='center-block'>
                                                     

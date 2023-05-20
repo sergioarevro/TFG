@@ -1,3 +1,0 @@
-Descripción sobre el tipo de test mail.
-
-Instrucciones para hacer el test.

@@ -5,7 +5,7 @@ class DataBase {
     private $host = 'localhost'; 
     private $user = 'root';
     private $password = 'root'; 
-    private $name_bd = 'TFG_Pishing';    
+    private $name_bd = 'TFG_Phishing';    
     
     private function __construct(){
     } 
