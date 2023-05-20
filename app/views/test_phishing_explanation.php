@@ -355,7 +355,7 @@
                                             <p class="col-md-12 text-left" style="opacity: 1; font-size: 16px; color: black; height: auto; margin-top: 15px;">Google ha detenido este intento de inicio de sesión. Debes cambiar tu contraseña de inmediato.</p>
                                             <button class="btn-rectangular-google col-md-4" style="font-size:14px; margin-left: 10px; margin-top: 10px;" href="http://myaccount.google.com-securitysettingpage.ml-security.org/signonoptions/" title="http://myaccount.google.com-securitysettingpage.ml-security.org/signonoptions/">CAMBIAR CONTRASEÑA</button>
                                             <div id="dropdown" class="dropdown-li col-md-1">
-                                                <img src="assets/icons/alert-info.png" style="margin-left: -50px; background-color: grey; height: 35px; width: 35px; margin-top: 10px;">                        
+                                                <img src="assets/icons/alert-info.png" style="background-color: rgba(102, 97, 91, 0); margin-left: -50px; height: 35px; width: 35px; margin-top: 10px;">                        
                                                 <ul class="dropdown" style="margin-left:-200px; width: 320px; height: auto;">
                                                      <li>Este enlace apunta a un subdominio de "ml-security.org", no de Google.</li>
                                                 </ul>    
@@ -396,7 +396,7 @@
                                                 </ul>    
                                             </div> 
                                             <div id="dropdown" class="dropdown-li col-md-1">
-                                                <img src="assets/icons/alert-info.png" style="margin-left: -50px; background-color: white; height: 35px; width: 35px;">                        
+                                                <img src="assets/icons/alert-info.png" style=" margin-left: -50px; background-color: white; height: 35px; width: 35px;">                        
                                                 <ul class="dropdown" style="margin-left:-200px; width: 320px; height: auto;">
                                                      <li>Al igual que en la pregunta anterior, la dirección "google.support" no se utiliza.</li>
                                                 </ul>    
@@ -417,7 +417,7 @@
                                             </p>
                                             <a href="https://google.com/amp/tinyurl.com/y7u8ewlr" class="col-md-3 text-left" style="opacity: 1; font-size: 17px; color: #448aff; font-weight: bold; margin-top: 10px; margin-bottom: 10px;">Cambiar contraseña</a>
                                             <div id="dropdown" class="dropdown-li col-md-1" style="display: inline-block; position: relative;">
-                                                <img src="assets/icons/alert-info.png" style="margin-left: -50px; background-color: white; height: 35px; width: 35px;">                        
+                                                <img src="assets/icons/alert-info.png" style="background-color: rgba(102, 97, 91, 0); margin-left: -50px; height: 35px; width: 35px;">                        
                                                 <ul class="dropdown" style="width: 320px; height: auto; position: absolute; top: -40px; left: 40px;">
                                                     <li>Este caso era complicado; el enlace en realidad redirige a una página de "tinyurl.com".</li>
                                                 </ul>    
@@ -438,7 +438,7 @@
                                         <div clas="col-md-12">
                                             <p class="col-md-5 text-left" style="opacity: 1; font-size: 18px; color: black; height: auto; font-weight: bold; margin-left: 15px;"> <a class="mostrar-mensaje" style="color: #448aff;" href="">TripIt</a> quiere</p>
                                             <div id="dropdown" class="dropdown-li col-md-1">
-                                                <img src="assets/icons/alert-info.png" style="margin-left: -75px; background-color: grey; height: 35px; width: 35px; top: -10px;">                        
+                                                <img src="assets/icons/alert-info.png" style="margin-left: -75px;height: 35px; width: 35px; top: -10px;">                        
                                                 <ul class="dropdown" style="margin-left:-200px; width: 320px; height: auto;">
                                                      <li> Aquí se muestra el nombre de la aplicación que solicita permiso, aunque debes hacer clic en ella para asegurarte de que el resto de los datos sean correctos. </li>
                                                 </ul>    
