@@ -1,5 +1,11 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/TFG/config/config.php';
+/*
+ * Esta clase gestiona las inserciones de la información 
+ * de usuario en la tabla users
+ */
+$documentRoot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING);
+include $documentRoot . '/TFG/config/config.php';
+//include $_SERVER['DOCUMENT_ROOT'].'/TFG/config/config.php';
 
 class UserModel {
 
@@ -7,13 +13,14 @@ class UserModel {
     private $db_connector;
     
     public function __construct($db_connector) {
+        session_start();
         $this->foreign_tables = array("color","lugar_residencia","estudios","ocupación");
         $this->db_connector = $db_connector;
     }
     
     public function insert() {     
         $conn = $this->db_connector->getConnection();
-        
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $date_of_birth = mysqli_real_escape_string($conn, $_POST['year'] . '-' . $_POST['month'] . '-' . $_POST['day']);
             $sex = mysqli_real_escape_string($conn, $_POST['sex']);

@@ -1,11 +1,19 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/TFG/config/config.php';
+/*
+ * Esta clase gestiona las consultas a las respuestas que debe 
+ * mostrar el test de información demografico.
+ */
+
+$documentRoot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING);
+include $documentRoot . '/TFG/config/config.php';
+//include $_SERVER['DOCUMENT_ROOT'].'/TFG/config/config.php';
 
 class PersonalModel {
     private $tables;
     private $dbconnector;
     
     public function __construct($db_connector) {
+        session_start();
         $this->tables = ['sexo','color', 'lugar_residencia', 'estudios', 'ocupación'];
         $this->db_connector = $db_connector;
     }
@@ -22,12 +30,12 @@ class PersonalModel {
         return $data;
     }
     
-    public function insert() {
+    /*public function insert() {
         
         $conn = $this->db_connector->getConnection();
         
         $this->db_connector->closeConnection($conn);
-    }
+    }*/
     
     
     public function execute($conn,$sql) {

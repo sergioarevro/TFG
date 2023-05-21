@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>   
-    <?php include "head.html"; ?>  
+    <?php include "head.html"; ?> 
 <body>
+
     <?php include "header.html"; ?>
     
     <div class="wrapper">
@@ -17,7 +18,11 @@
                         <div class="col-md-8 col-md-offset-2">
                             <h2>Test de estudio phishing</h2>
                             <br>
-                            <a href="index.php?view=init_test&test=demografico" class="btn">Inicia el Test</a>
+                            <form id="form" method="POST" action="index.php">
+                                <input type="hidden" name="view" value="init_test">
+                                <input type="hidden" name="test" value="demografico">
+                                <button type="submit" class="btn">Iniciar</button>
+                            </form>
                         </div>
                     </div>
                 </div>

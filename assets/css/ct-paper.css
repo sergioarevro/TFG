@@ -943,7 +943,7 @@ input.ct-red + span + label + span.switch-right {
     margin: 0 auto; 
   }
   
-  .pishing-container{
+  .phishing-container{
     margin: 20px auto 10px;
     background-color: #fcfcfb;
     border-radius: 8px;
@@ -957,6 +957,7 @@ input.ct-red + span + label + span.switch-right {
     flex-wrap: wrap;
     flex-direction: column;
     width: 100%; /* Ancho fijo */
+    height: auto;
     align-items: center;
     justify-content: center;
     margin-left: 10px;
@@ -974,25 +975,25 @@ input.ct-red + span + label + span.switch-right {
     overflow: auto;
   }
   
-  .pishing-container .title {
+  .phishing-container .title {
     color: #B33C12;
     text-align: center;
     padding-bottom: 50px;
   }
 
-   .pishing-container .btn {
+   .phishing-container .btn {
         margin-top: 20px; 
         margin-bottom: 10px;
    }
   
-  .btn-pishing{
+  .btn-phishing{
       max-width: 100%;
       display: inline-block;
       margin-right: 20px;
       margin-left: 20px;
   }
   
-  .btn-pishing-container{
+  .btn-phishing-container{
     display: flex; /* Utilizamos flexbox para alinear los botones horizontalmente */
     justify-content: center; /* Centramos los botones horizontalmente */
   }

@@ -15,28 +15,41 @@
                                 
                                 <?php if ($test == 'demografico') { ?>
                                     <h2 class='col-md-12'>Test de Información demográfica</h2>
-                                    <p>Descripción del test demográfico</p>
+                                    <p class="col-md-12">Descripción del test demográfico</p>
                                     <?php $test='users'; ?>
                                 <?php }?>
                                     
                                 <?php if ($test == 'operas') { ?>
                                     <h2 class='col-md-12'>Test OPERAS</h2>
-                                    <p>Descripción del OPERAS</p>
+                                    <p class="col-md-12">Descripción del OPERAS</p>
                                 <?php }?>
                                     
                                 <?php if ($test == 'iq') { ?>
                                     <h2 class='col-md-12'>Test de IQ</h2>
-                                    <p>Descripción del IQ</p>
+                                    <p class="col-md-12">Descripción del IQ</p>
                                 <?php }?>
 
                                 <?php if ($test == 'mail') { ?>
                                     <h2 class='col-md-12'>Test de Mail Phishing</h2>
-                                    <p>Descripción del Mail Test.</p>
-                                    <p>Escoge entre realizar el test en modo entrenamiento o en modo experimento. El modo entrenamiento da feedback sobre las respuestas.</p>
-                                    <a class='col-md-12' href="index.php?section=<?php echo $test?>&action=init&mode=entrenamiento"><button class="btn btn-block btn-send">Entrenamiento</button></a>
-                                    <a class='col-md-12' href="index.php?section=<?php echo $test?>&action=init&mode=experimento"><button class="btn btn-block btn-send">Experimento</button></a>
+                                    <p class="col-md-12">Descripción del Mail Test.</p>
+                                    <p class="col-md-12">Escoge entre realizar el test en modo entrenamiento o en modo experimento. El modo entrenamiento da feedback sobre las respuestas.</p>
+                                    
+                                    <form id="formMail" method="POST" action="index.php">
+                                        <input type="hidden" name="section" value="<?php echo $test?>">
+                                        <input type="hidden" name="action" value="init">
+                                        <div class="col-md-12" style="display: inline-block;">
+                                            <button type="submit" name="mode" value="entrenamiento" class="btn btn-block btn-send col-md-4" style="width: 250px; margin-right: 10px;">Entrenamiento</button>
+                                            <button type="submit" name="mode" value="experimento" class="btn btn-block btn-send col-md-4" style="width: 250px;">Experimento</button>
+                                        </div>
+                                    </form>
                                 <?php }else {?>
-                                    <a class='col-md-12' href="index.php?section=<?php echo $test?>&action=init"><button class="btn btn-block btn-send">Iniciar</button></a>
+                                   
+                                    <form id="form" method="POST" action="index.php">
+                                        <input type="hidden" name="section" value="<?php echo $test?>">
+                                        <input type="hidden" name="action" value="init">
+                                        <button type="submit" class="btn btn-block btn-send" style="width: 150px;">Iniciar</button>   
+                                    </form>
+                                    
                                 <?php }?>  
                             </div>
                         </div>

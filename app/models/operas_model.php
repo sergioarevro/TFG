@@ -1,5 +1,10 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/TFG/config/config.php';
+/*
+ * Esta clase gestiona las operaciones relacionadas con el test Operas
+ */
+//include $_SERVER['DOCUMENT_ROOT'].'/TFG/config/config.php';
+$documentRoot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING);
+include $documentRoot . '/TFG/config/config.php';
 
 class OperasModel{
     
@@ -12,7 +17,7 @@ class OperasModel{
     }
     
     public function getAllQuestions() {
-        $conn = $this->db_connector->getConnection();
+        //$conn = $this->db_connector->getConnection();
         $sql = "SELECT id, quest_esp FROM questions_operas";
         $result = mysqli_query($this->conn, $sql);     
         
@@ -100,8 +105,7 @@ class OperasModel{
      */
     public function setFinalScore(){
         $conn = $this->db_connector->getConnection();
-        $id_user = $_SESSION['user_id'];
-        
+        $id_user = $_SESSION['user_id'];       
         
       //TODO
         
@@ -115,5 +119,4 @@ class OperasModel{
     }
     
 }
-
 ?>

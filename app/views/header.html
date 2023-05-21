@@ -1,6 +1,7 @@
 <header>
- <nav class="navbar navbar-ct-transparent navbar-fixed-top" role="navigation-demo" id="register-navbar">
-      <div class="container">
+
+<nav class="navbar navbar-ct-transparent navbar-fixed-top" id="register-navbar">
+    <div class="container">
        
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
@@ -17,16 +18,30 @@
                 <a href="index.php" class="btn btn-simple">Inicio</a>
             </li>
             <li>
-                <a href="index.php?view=init_test&test=operas" class="btn btn-simple">Operas</a>
+                <li>
+                    <form id="form" method="POST" action="index.php">
+                        <input type="hidden" name="view" value="init_test">
+                        <input type="hidden" name="test" value="operas">
+                        <button type="submit" class="btn btn-simple" style="background-color: transparent;">Operas</button>
+                    </form>
+                </li>
+            <li>
+                <form id="form" method="POST" action="index.php">
+                    <input type="hidden" name="view" value="init_test">
+                    <input type="hidden" name="test" value="iq">
+                    <button type="submit" class="btn btn-simple" style="background-color: transparent;">IQ</button>
+                </form>
             </li>
             <li>
-                <a href="index.php?view=init_test&test=iq" class="btn btn-simple">IQ</a>
-            </li>
-            <li>
-                <a href="index.php?view=init_test&test=mail" class="btn btn-simple">Phishing</a>
+                <form id="form" method="POST" action="index.php">
+                    <input type="hidden" name="view" value="init_test">
+                    <input type="hidden" name="test" value="mail">
+                    <button type="submit" class="btn btn-simple" style="background-color: transparent;">Phishing</button>
+                </form>
             </li>
            </ul>
         </div>
       </div>
     </nav>  
 </header> 
+

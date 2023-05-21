@@ -1,5 +1,12 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/TFG/config/config.php';
+/*
+ * Esta clase gestiona todas las operaciones relacionadas 
+ * con el test de mails de Google
+ */
+
+$documentRoot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING);
+include $documentRoot . '/TFG/config/config.php';
+//include $_SERVER['DOCUMENT_ROOT'].'/TFG/config/config.php';
 
 class MailModel {
 
@@ -31,7 +38,7 @@ class MailModel {
         $this->db_connector->closeConnection($conn);
     }
     
-        /*
+    /*
      * Función que devuelve el numero de preguntas que hay en el test
      */
     public function getNumQuest(){
@@ -90,7 +97,7 @@ class MailModel {
                 echo "Error al crear la nueva entrada: " . $conn->error;
             }
         }
-        $this->db_connector->closeConnection($conn);;
+        $this->db_connector->closeConnection($conn);
     }
     
     public function execute($conn,$sql) {

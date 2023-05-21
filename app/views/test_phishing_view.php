@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html>
     <?php include "head.html"; ?>
-    <title>Pishing <?php echo $text; ?></title>
+    <title>Phishing <?php echo $text; ?></title>
 <body>    
     <?php include "header.html"; ?>
 
+    <script>
+        // Seleccionar el enlace y la pantalla superpuesta
+        var enlace = document.querySelector('.mostrar-mensaje');
+        var pantallaSuperpuesta = document.querySelector('.pantalla-superpuesta');
+
+        // Mostrar la pantalla superpuesta cuando se hace clic en el enlace
+        enlace.addEventListener('click', function(event) {
+        event.preventDefault();
+        pantallaSuperpuesta.style.display = 'block';
+        });
+
+        document.getElementById("cerrar-mensaje").onclick = function() {
+        document.querySelector(".pantalla-superpuesta").style.display = "none";
+        };
+    </script>
+    
+    
     <div class="wrapper">
         <div class="register-background"> 
                <div class="container" style="display: flex; justify-content: center; align-items: center;">
                     <div class="col-md-12 col-sm-6 col-xs-10">
-                        <div class="text-center pishing-container">
+                        <div class="text-center phishing-container">
                             <div class="col-md-12 text-right">
                                 <p><?php echo "Modo $mode"; ?></p>
                             </div>
@@ -174,7 +191,7 @@
                                             <p class="col-md-12 text-left dropbox-text">P.D.: Si necesitas el plan más grande del que disponemos, echa un vistazo a <a class="doc-name" style="font-size: 17px; color: #448aff;" href="https://www.dropbox.com/business" title="https://www.dropbox.com/business">Dropbox Bussines.</a></p>
                                         </div>
                                     </div>
-                                </div>               
+                                           
                             <?php }?> 
                             
                             <!-- Pregunta 5 -->
@@ -368,78 +385,28 @@
                                 </div>                                        
                             <?php }?>                         
                             
-                        </div>
-                            <?php if ($mode == 'experimento') { ?>
-                                <form id="mail_pishing" method="POST" action="index.php?section=mail&action=insert_answer&mode=<?php echo "$mode"; ?>">
-                                    <div class="btn-pishing-container">
-                                        <input type="hidden" name="quest_id" value="<?php echo $num_quest; ?>">
-                                        <button class="btn btn-block btn-send btn-pishing" type="submit" name="answer" value="phishing"> Phishing </button>
-                                        <button class="btn btn-block btn-send btn-pishing" type="submit" name="answer" value="legitimo"> Legítimo </button>
-                                    </div>
-                                </form>
-                            <?php }?>
-                        
-                            <?php if ($mode == 'entrenamiento') { ?>
-                            <form id="mail_pishing" method="POST" action="index.php?section=mail&action=insert_answer&mode=<?php echo "$mode"; ?>">
-                                <div class="btn-pishing-container">
-                                    <input type="hidden" name="quest_id" value="<?php echo $num_quest; ?>">
-                                    <button class="btn btn-block btn-send btn-pishing mostrar-popup" type="submit" name="answer" value="phishing"> Phishing </button>
-                                    <button class="btn btn-block btn-send btn-pishing mostrar-popup" type="submit" name="answer" value="legitimo"> Legítimo </button>
-                                </div>
-                            </form>
-
-                            <div id="myPopup" class="pop-up">
-                                <div class="explanation">
-                                    <p>Texto de prueba</p>
-                                    <div id="close-explanation" class="btn btn-block btn-send btn-pishing">Continuar</div>
-                                </div>
-                            </div>
-
-                            <script>
-                                /*document.addEventListener("DOMContentLoaded", function() {
-                                    // Seleccionar los elementos relevantes
-                                    var enlaces = document.querySelectorAll('.mostrar-popup');
-                                    var pantallaSuperpuesta = document.getElementById('myPopup');
-                                    var cerrar = document.getElementById('close-explanation');
-
-                                    // Mostrar la pantalla superpuesta cuando se hace clic en cualquiera de los enlaces
-                                    enlaces.forEach(function(enlace) {
-                                        enlace.addEventListener('click', function(event) {
-                                            event.preventDefault();
-                                            pantallaSuperpuesta.style.display = 'block';
-                                        });
-                                    });
-
-                                    // Cerrar la pantalla superpuesta al hacer clic en el botón de cerrar
-                                    cerrar.addEventListener('click', function() {
-                                        pantallaSuperpuesta.style.display = 'none';
-                                    });
-                                });*/
-                            </script>
-                            <?php }?>
+                        </div>                        
+                        <form id="form" method="POST" action="index.php" onsubmit="return validateForm()">
+                          <div class="btn-phishing-container">
+                            <input type="hidden" name="num" value="<?php echo $num_quest; ?>">
+                            <input type="hidden" name="section" value="mail">
+                            <input type="hidden" name="action" value="insert_answer">
+                            <input type="hidden" name="mode" value="<?php echo $mode; ?>">
+                            <button class="btn btn-block btn-send btn-phishing" type="submit" name="answer" value="phishing">Phishing</button>
+                            <button class="btn btn-block btn-send btn-phishing" type="submit" name="answer" value="legitimo">Legítimo</button>
+                          </div>
+                        </form>
                     </div>
                 </div>
             </div>     
         <?php include "footer.html"; ?>
         </div>
     </div>
-    
     <script>
-    // Seleccionar el enlace y la pantalla superpuesta
-    var enlace = document.querySelector('.mostrar-mensaje');
-    var pantallaSuperpuesta = document.querySelector('.pantalla-superpuesta');
-
-    // Mostrar la pantalla superpuesta cuando se hace clic en el enlace
-    enlace.addEventListener('click', function(event) {
-    event.preventDefault();
-    pantallaSuperpuesta.style.display = 'block';
-    });
-
-    document.getElementById("cerrar-mensaje").onclick = function() {
-    document.querySelector(".pantalla-superpuesta").style.display = "none";
-    };
-    
-   
+        function invalidMsg(event) {
+            event.preventDefault();
+            alert("Por favor seleccione una respuesta.");
+        }
     </script>
 </body>
 </html>

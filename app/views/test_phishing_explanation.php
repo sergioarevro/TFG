@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html>
     <?php include "head.html"; ?>
-    <title>Pishing <?php echo $text; ?></title>
-<body>    
+    <title>Phishing <?php echo $text; ?></title>
+<body> 
+    
     <?php include "header.html"; ?>
 
+<script>
+    // Mostrar la pantalla superpuesta cuando se hace clic en el enlace
+    enlace.addEventListener('click', function(event) {
+    event.preventDefault();
+    pantallaSuperpuesta.style.display = 'block';
+    });
+
+    document.getElementById("cerrar-mensaje").onclick = function() {
+    document.querySelector(".pantalla-superpuesta").style.display = "none";
+    };
+</script>
+        
     <div class="wrapper">
         <div class="register-background"> 
                <div class="container" style="display: flex; justify-content: center; align-items: center;">
                     <div class="col-md-12 col-sm-6 col-xs-10">
-                        <div class="text-center pishing-container">
+                        <div class="text-center phishing-container">
                             <div class="col-md-12 text-right">
                                 <p><?php echo "Modo $mode"; ?></p>
                                 <p>    <?php
@@ -213,13 +226,13 @@
                                             <p class="col-md-12 text-left dropbox-text">Hola:</p>
                                             <p class= "col-md-12 text-left dropbox-text">Tu Dropbox está lleno y ha dejado de sincronizar archivos. No podrás acceder a los nuevos archivos que añadas a tu carpeta de Dropbox desde el resto de tus dispositivos. Tampoco se creará una copia de ellos online.</p>
                                             <p class="col-md-12 text-left dropbox-text">Actualiza tu versión de Dropbox hoy mismo y consigue 1&nbsp;TB (1000&nbsp;GB) de espacio, así como eficientes funciones para compartir contenido.</p>
-                                            <div class="col-md-12" style="align-items: center; display:flex; justify-content: center;"><button class="btn-rectangular-google col-md-3" style="margin-top: 5px; margin-bottom: 5px; padding: 4px;" href="https://www.dropbox.com/buy" title="https://www.dropbox.com/buy">Actualiza tu Dropbox</button>
-                                                                                    <div id="dropdown" class="dropdown-li">
-                                            <img src="assets/icons/alert-info.png" style="margin-left: 5px; background-color: white; height: 35px; width: 35px;">                        
-                                            <ul class="dropdown" style="margin-left:0px; width: 300px; height: auto;">
-                                                <li> La URL es un enlace legítimo y seguro a "dropbox.com".</li>
-                                            </ul>
-                                        </div>
+                                            <div class="col-md-12" style="align-items: center; display:flex; justify-content: center;"><button class="btn-rectangular-google col-md-3" style="margin-top: 5px; margin-bottom: 5px; padding: 4px;" href="https://www.dropbox.com/buy" title="https://www.dropbox.com/buy">Actualiza tu Dropbox</button></div>
+                                            
+                                            <div id="dropdown" class="dropdown-li">
+                                                <img src="assets/icons/alert-info.png" style="margin-left: 5px; background-color: white; height: 35px; width: 35px;">                        
+                                                <ul class="dropdown" style="margin-left:0px; width: 300px; height: auto;">
+                                                    <li> La URL es un enlace legítimo y seguro a "dropbox.com".</li>
+                                                </ul>
                                             </div>
                                             <p class="col-md-12 text-left dropbox-text">Para ver otras formas de conseguir más espacio, visita nuestra página <a class="doc-name" style="font-size: 17px; color: #448aff;" href="https://www.dropbox.com/help/space/get-more-space" title="https://www.dropbox.com/help/space/get-more-space">Obtener más espacio.</a></p>
                                             <p class="col-md-12 text-left dropbox-text">¡Que disfrutes de tu Dropbox!</p>
@@ -227,7 +240,7 @@
                                             <p class="col-md-12 text-left dropbox-text">P.D.: Si necesitas el plan más grande del que disponemos, echa un vistazo a <a class="doc-name" style="font-size: 17px; color: #448aff;" href="https://www.dropbox.com/business" title="https://www.dropbox.com/business">Dropbox Bussines.</a></p>
                                         </div>
                                     </div>
-                                </div>               
+                                              
                             <?php }?> 
                             
                             <!-- Pregunta 5 -->
@@ -484,10 +497,13 @@
                             
                         </div>
                             
-                            <form id="mail_pishing" method="POST" action="index.php?section=mail&action=show_next&num=<?php echo "$num_quest"; ?>&mode=<?php echo "$mode"; ?>">
-                                <div class="btn-pishing-container">
-                                    <input type="hidden" name="quest_id" value="<?php echo $num_quest; ?>">
-                                    <button class="btn btn-block btn-send btn-pishing " type="submit" name="answer" value="phishing"> Continuar </button>
+                            <form id="form" method="POST" action="index.php">
+                                <div class="btn-phishing-container">
+                                    <input type="hidden" name="section" value="mail">
+                                    <input type="hidden" name="action" value="show_next">
+                                    <input type="hidden" name="mode" value="<?php echo $mode; ?>">
+                                    <input type="hidden" name="num" value="<?php echo $num_quest; ?>">
+                                    <button class="btn btn-block btn-send btn-phishing " type="submit" name="answer" value="phishing"> Continuar </button>
                                 </div>
                             </form>
                     </div>
@@ -497,22 +513,5 @@
         </div>
     </div>
     
-    <script>
-    // Seleccionar el enlace y la pantalla superpuesta
-    var enlace = document.querySelector('.mostrar-mensaje');
-    var pantallaSuperpuesta = document.querySelector('.pantalla-superpuesta');
-
-    // Mostrar la pantalla superpuesta cuando se hace clic en el enlace
-    enlace.addEventListener('click', function(event) {
-    event.preventDefault();
-    pantallaSuperpuesta.style.display = 'block';
-    });
-
-    document.getElementById("cerrar-mensaje").onclick = function() {
-    document.querySelector(".pantalla-superpuesta").style.display = "none";
-    };
-    
-   
-    </script>
 </body>
 </html>

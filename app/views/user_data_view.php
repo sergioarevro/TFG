@@ -11,7 +11,9 @@
                         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 ">
                             <div class="register-card">
                                 <h3 class="title">Información personal</h3>
-                                    <form clas= "register-form" action="/TFG/index.php?section=users&action=store_aswer" method="POST">
+                                    <form id="form" clas="register-form"  method="POST" action="index.php">
+                                        <input type="hidden" name="section" value="users">
+                                        <input type="hidden" name="action" value="insert_answer">
                                         <label for="sex">Sexo </label>
                                         <select id="sex" name="sex" required oninvalid="invalidMsg(event)" title="Sexo">
                                             <option value=""></option>
@@ -91,15 +93,15 @@
                                         </select>
                                         <br>
                                        
-                                        <button class="btn btn-block btn-send" type="submit" name="submit_answer" value="Submit">Enviar</button>
+                                        <button class="btn btn-block btn-send" type="submit">Enviar</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>  
                 </div>
-             <?php include "footer.html"; ?>
-            </div>  
+            <?php include "footer.html"; ?>
+        </div>  
         
         <script>
             function invalidMsg(event) {

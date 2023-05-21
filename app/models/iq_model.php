@@ -1,5 +1,11 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'].'/TFG/config/config.php';
+/*
+ * Esta clase gestiona todas las operaciones referntes al test IQ
+ */
+
+//include $_SERVER['DOCUMENT_ROOT'].'/TFG/config/config.php';
+$documentRoot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING);
+include $documentRoot . '/TFG/config/config.php';
 
 class IqModel {
 
@@ -10,7 +16,7 @@ class IqModel {
     }
     
     
-    //Metodos para crear instancia, getters & setters, iniciar variables
+    //Funciones para crear instancia, getters & setters, iniciar variables
     public static function createInstance($db_connector) {
         session_start();
         if (!isset($_SESSION['iq_instance'])) {
@@ -34,14 +40,16 @@ class IqModel {
     }
     
     public function iniVariables(){
-        //$this->quest123_first = true;
         $this->show_back = false;
         $this->reverse_mode = false;
         $this->next_question = 1;
     }
     
+    /*
+     * Funciones de comunicación con Base de Datos
+     */
+    
     public function getAllQuestions() {
-    $conn = $this->db_connector->getConnection();
     $sql = "SELECT id, path_q, path_a FROM questions_iq";
     $result = mysqli_query($this->conn, $sql);     
 
@@ -224,7 +232,9 @@ class IqModel {
         $this->db_connector->closeConnection($conn);
     }
 
-    //Función que comprueva las condiciones de salida del test
+    /*
+     * Función que comprueva las condiciones de salida del test
+     */
     public function checkConditions($last_question){
         $conn = $this->db_connector->getConnection();
         $user_id = $_SESSION['user_id'];
@@ -232,7 +242,7 @@ class IqModel {
         $errors_consec = 0;                 //Contador de errores consecutivos en las 5 respuestas anteriores
         $errors_last_five = 0;              //Contador de numero de fallos en las 5 respuestas anteriores
         $aux = 0;
-        $quest;                         //Id de pregunta que consultamos
+        $quest = 0;                         //Id de pregunta que consultamos
         
         for ($quest = $last_question; $quest >= $last_question-5; $quest --){
             $sql = "SELECT correct FROM answers_iq WHERE id_quest_iq = $quest AND id_user = $user_id";
@@ -267,14 +277,15 @@ class IqModel {
         $this->db_connector->closeConnection($conn);   
     }
     
-    //Funcion que actualiza a correcta una respuesta anterior
+    /*
+     * Funcion que actualiza a correcta una respuesta anterior
+     */
     public function updateAnswer($user_id,$question_id, $correct){
         $conn = $this->db_connector->getConnection();
 
         $sql = "UPDATE answers_iq SET correct = $correct WHERE id_user = $user_id AND id_quest_iq = $question_id";
         $this->execute($conn, $sql);
-        $this->db_connector->closeConnection($conn);
-        
+        $this->db_connector->closeConnection($conn);     
     }
     
     /*
@@ -294,8 +305,6 @@ class IqModel {
      */
     public function checkCorrect($question_id, $answer){
         $conn = $this->db_connector->getConnection();
-        $correct;
-        $resultado;
         
         $sql = "SELECT correct_a FROM questions_iq WHERE id = $question_id";
 
@@ -311,11 +320,9 @@ class IqModel {
                 $correct = 0;
             }
         } else {
-            // Manejar el error de la consulta
             echo "Error en la consulta: " . $conn->error;
         }
 
-        
         $this->db_connector->closeConnection($conn);
         return $correct;
     }
@@ -361,7 +368,7 @@ class IqModel {
     }
     
     /*
-     * Funció que calcula el resultado total del test
+     * Función que calcula el resultado total del test
      */
     public function getScore(){
         $conn = $this->db_connector->getConnection();
@@ -397,32 +404,25 @@ class IqModel {
         $sql = "SELECT * FROM puntuaciones WHERE id_user = $id_user";
         $result2 = $conn->query($sql);
         
-        $Timestamp = date('Y-m-d H:i:s') . ' - ';
-        file_put_contents('/Applications/MAMP/logs/php_errors.log', $Timestamp."Dentro set iq score: user: $id_user ,nota: $count".PHP_EOL, FILE_APPEND);
-        
         if ($result2 && $result2->num_rows > 0) {
-                    $Timestamp = date('Y-m-d H:i:s') . ' - ';
-        file_put_contents('/Applications/MAMP/logs/php_errors.log', $Timestamp."User creado".PHP_EOL, FILE_APPEND);
             $row = $result2->fetch_assoc();
 
             $updateSql = "UPDATE puntuaciones SET iq = $count WHERE id_user = $id_user";
             if ($conn->query($updateSql) === TRUE) {
-                echo "Entrada actualizada correctamente.";
+                //
             } else {
                 echo "Error al actualizar la entrada: " . $conn->error;
             }
         } else {
-        $Timestamp = date('Y-m-d H:i:s') . ' - ';
-        file_put_contents('/Applications/MAMP/logs/php_errors.log', $Timestamp."User no creado".PHP_EOL, FILE_APPEND);
             $insertSql = "INSERT INTO puntuaciones (id_user, iq) VALUES ($id_user, $count)";
             if ($conn->query($insertSql) === TRUE) {
-                echo "Nueva entrada creada correctamente.";
+                //echo "Nueva entrada creada correctamente.";
             } else {
                 echo "Error al crear la nueva entrada: " . $conn->error;
             }
         }
 
-        $this->db_connector->closeConnection($conn);;
+        $this->db_connector->closeConnection($conn);
     }
     
     public function execute($conn,$sql) {
