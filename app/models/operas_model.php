@@ -2,7 +2,7 @@
 /*
  * Esta clase gestiona las operaciones relacionadas con el test Operas
  */
-//include $_SERVER['DOCUMENT_ROOT'].'/TFG/config/config.php';
+
 $documentRoot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING);
 include $documentRoot . '/TFG/config/config.php';
 
@@ -17,7 +17,6 @@ class OperasModel{
     }
     
     public function getAllQuestions() {
-        //$conn = $this->db_connector->getConnection();
         $sql = "SELECT id, quest_esp FROM questions_operas";
         $result = mysqli_query($this->conn, $sql);     
         

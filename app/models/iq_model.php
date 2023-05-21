@@ -3,7 +3,6 @@
  * Esta clase gestiona todas las operaciones referntes al test IQ
  */
 
-//include $_SERVER['DOCUMENT_ROOT'].'/TFG/config/config.php';
 $documentRoot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING);
 include $documentRoot . '/TFG/config/config.php';
 

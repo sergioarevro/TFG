@@ -6,7 +6,6 @@
 
 $documentRoot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING);
 include $documentRoot . '/TFG/config/config.php';
-//include $_SERVER['DOCUMENT_ROOT'].'/TFG/config/config.php';
 
 class PersonalModel {
     private $tables;
@@ -29,14 +28,6 @@ class PersonalModel {
         
         return $data;
     }
-    
-    /*public function insert() {
-        
-        $conn = $this->db_connector->getConnection();
-        
-        $this->db_connector->closeConnection($conn);
-    }*/
-    
     
     public function execute($conn,$sql) {
         if (!$conn->query($sql) === TRUE) {

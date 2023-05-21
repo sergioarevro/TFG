@@ -4,23 +4,6 @@
     <title>Phishing <?php echo $text; ?></title>
 <body>    
     <?php include "header.html"; ?>
-
-    <script>
-        // Seleccionar el enlace y la pantalla superpuesta
-        var enlace = document.querySelector('.mostrar-mensaje');
-        var pantallaSuperpuesta = document.querySelector('.pantalla-superpuesta');
-
-        // Mostrar la pantalla superpuesta cuando se hace clic en el enlace
-        enlace.addEventListener('click', function(event) {
-        event.preventDefault();
-        pantallaSuperpuesta.style.display = 'block';
-        });
-
-        document.getElementById("cerrar-mensaje").onclick = function() {
-        document.querySelector(".pantalla-superpuesta").style.display = "none";
-        };
-    </script>
-    
     
     <div class="wrapper">
         <div class="register-background"> 
@@ -403,6 +386,20 @@
         </div>
     </div>
     <script>
+        // Seleccionar el enlace y la pantalla superpuesta
+        var enlace = document.querySelector('.mostrar-mensaje');
+        var pantallaSuperpuesta = document.querySelector('.pantalla-superpuesta');
+
+        // Mostrar la pantalla superpuesta cuando se hace clic en el enlace
+        enlace.addEventListener('click', function(event) {
+        event.preventDefault();
+        pantallaSuperpuesta.style.display = 'block';
+        });
+
+        document.getElementById("cerrar-mensaje").onclick = function() {
+        document.querySelector(".pantalla-superpuesta").style.display = "none";
+        };
+        
         function invalidMsg(event) {
             event.preventDefault();
             alert("Por favor seleccione una respuesta.");

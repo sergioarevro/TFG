@@ -3,9 +3,9 @@
  * Esta clase gestiona las inserciones de la información 
  * de usuario en la tabla users
  */
+
 $documentRoot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING);
 include $documentRoot . '/TFG/config/config.php';
-//include $_SERVER['DOCUMENT_ROOT'].'/TFG/config/config.php';
 
 class UserModel {
 

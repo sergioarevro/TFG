@@ -5,18 +5,6 @@
 <body> 
     
     <?php include "header.html"; ?>
-
-<script>
-    // Mostrar la pantalla superpuesta cuando se hace clic en el enlace
-    enlace.addEventListener('click', function(event) {
-    event.preventDefault();
-    pantallaSuperpuesta.style.display = 'block';
-    });
-
-    document.getElementById("cerrar-mensaje").onclick = function() {
-    document.querySelector(".pantalla-superpuesta").style.display = "none";
-    };
-</script>
         
     <div class="wrapper">
         <div class="register-background"> 
@@ -129,13 +117,14 @@
                                     <div class="email-fax-content">
                                         <p class="email-content-style text-left" style="margin-left: 15px; opacity: 1; font-size: 16px;">Recibiste un fax de 1 página el <?php echo date("d/m/y, H:i");; ?> </p>
                                         <a class="col-md-3 text-left" href="http://efax.hosting.com.mailru382.co/efaxdelivery/2017Dk4h325RE3" title="http://efax.hosting.com.mailru382.co/efaxdelivery/2017Dk4h325RE3" style="color: #448aff; font-size: 16px; font-weight: 900;">Ver este fax online</a>
+                                    </div>     
                                         <div id="dropdown" class="dropdown-li text-left">
-                                            <img src="assets/icons/alert-info.png" style="margin-bottom: 5px;margin-left: -40px; background-color: white; height: 35px; width: 35px;">                        
+                                            <img src="assets/icons/alert-info.png" style="margin-bottom: 5px;margin-left: 40px; height: 35px; width: 35px;">                        
                                             <ul class="dropdown" style="width: 300px; height: auto;">
                                                  <li> En realidad, el enlace dirige a "mailru382.co"; lo puedes ver al final del nombre de dominio. No es para nada lo que cabría esperar. </li>
                                             </ul>    
                                         </div>
-                                    </div> 
+                                    
                                     <hr class="email-separator col-md-11">
                                     <div class="text-center" style="text-align: center;">
                                         <img class="efax-icon text-center" src="assets/icons/efax.png">
@@ -198,8 +187,8 @@
                                         <div class="col-md-1">
                                             <div class="email-hour text-right"><?php echo date('H:i'); ?></div>
                                         </div>
-                                        <div class="col-md-11">
-                                            <div id="dropdown" class="dropdown-li col-md-2">para mí<button class="drop-button" style="margin-left:5px; background-color: white; border:none;"><img src="assets/icons/dropdown-icon.png"></button>                              
+                                        <div class="col-md-2">
+                                            <div id="dropdown" class="dropdown-li">para mí<button class="drop-button" style="margin-left:5px; background-color: white; border:none;"><img src="assets/icons/dropdown-icon.png"></button>                              
                                                 <ul class="dropdown" style="width: 450px; height: auto;">
                                                     <li><span class="email-dir" style="margin-left: 20px;">de:&nbsp;</span><span class="name-email">DropBox &lt;no-reply@dropboxmail.com&gt;</span></li>
                                                     <li><span class="email-dir" style="margin-left: 20px;">para:&nbsp;</span><span class="name-email"> Usuario ‎&lt;user123@gmail.com&gt</span></li>
@@ -212,13 +201,14 @@
                                                     <li><span class="email-dir" style="margin-left: 20px;">asunto:&nbsp;</span><span class="name-email">Tu Dropbox ha dejado de sincronizarse</span></li>
                                                     </ul>    
                                             </div>
-                                            <div id="dropdown" class="dropdown-li">
-                                                <img src="assets/icons/alert-info.png" style="margin-left: 5px; background-color: white; height: 35px; width: 35px;">                        
-                                                <ul class="dropdown" style="margin-left:0px; width: 300px; height: auto;">
-                                                    <li>Si buscas "dropboxmail.com", verás rápidamente que es legítimo. </li>
-                                                </ul>
-                                            </div> 
+
                                         </div>
+                                        <div id="dropdown" class="dropdown-li col-md-2">
+                                            <img src="assets/icons/alert-info.png" style="margin-left: 5px; background-color: white; height: 35px; width: 35px;">                        
+                                            <ul class="dropdown" style="margin-left:0px; width: 300px; height: auto;">
+                                                <li>Si buscas "dropboxmail.com", verás rápidamente que es legítimo. </li>
+                                            </ul>
+                                        </div> 
                                     </div>
                     
                                     <div class="col-md-11" style="border: 1px solid grey; width:auto; height:90%; padding: 10px; margin: 20px;">
@@ -227,10 +217,10 @@
                                             <p class= "col-md-12 text-left dropbox-text">Tu Dropbox está lleno y ha dejado de sincronizar archivos. No podrás acceder a los nuevos archivos que añadas a tu carpeta de Dropbox desde el resto de tus dispositivos. Tampoco se creará una copia de ellos online.</p>
                                             <p class="col-md-12 text-left dropbox-text">Actualiza tu versión de Dropbox hoy mismo y consigue 1&nbsp;TB (1000&nbsp;GB) de espacio, así como eficientes funciones para compartir contenido.</p>
                                             <div class="col-md-12" style="align-items: center; display:flex; justify-content: center;"><button class="btn-rectangular-google col-md-3" style="margin-top: 5px; margin-bottom: 5px; padding: 4px;" href="https://www.dropbox.com/buy" title="https://www.dropbox.com/buy">Actualiza tu Dropbox</button></div>
-                                            
-                                            <div id="dropdown" class="dropdown-li">
+                                           
+                                            <div id="dropdown" class="dropdown-li col-md-12">
                                                 <img src="assets/icons/alert-info.png" style="margin-left: 5px; background-color: white; height: 35px; width: 35px;">                        
-                                                <ul class="dropdown" style="margin-left:0px; width: 300px; height: auto;">
+                                                <ul class="dropdown" style="margin-left:300px; width: 250px; height: auto;">
                                                     <li> La URL es un enlace legítimo y seguro a "dropbox.com".</li>
                                                 </ul>
                                             </div>
@@ -238,7 +228,7 @@
                                             <p class="col-md-12 text-left dropbox-text">¡Que disfrutes de tu Dropbox!</p>
                                             <p class="col-md-12 text-left dropbox-text">El equipo de Dropbox</p>
                                             <p class="col-md-12 text-left dropbox-text">P.D.: Si necesitas el plan más grande del que disponemos, echa un vistazo a <a class="doc-name" style="font-size: 17px; color: #448aff;" href="https://www.dropbox.com/business" title="https://www.dropbox.com/business">Dropbox Bussines.</a></p>
-                                        </div>
+                                        </div> 
                                     </div>
                                               
                             <?php }?> 
@@ -512,6 +502,21 @@
         <?php include "footer.html"; ?>
         </div>
     </div>
-    
+    <script>
+        // Seleccionar el enlace y la pantalla superpuesta
+        var enlace = document.querySelector('.mostrar-mensaje');
+        var pantallaSuperpuesta = document.querySelector('.pantalla-superpuesta');
+
+        // Mostrar la pantalla superpuesta cuando se hace clic en el enlace
+        enlace.addEventListener('click', function(event) {
+        event.preventDefault();
+        pantallaSuperpuesta.style.display = 'block';
+        });
+
+        document.getElementById("cerrar-mensaje").onclick = function() {
+        document.querySelector(".pantalla-superpuesta").style.display = "none";
+        };
+        
+    </script>    
 </body>
 </html>
