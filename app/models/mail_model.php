@@ -83,7 +83,6 @@ class MailModel {
             $updateSql = "UPDATE puntuaciones SET mail = $count WHERE id_user = $id_user";
             
             if ($conn->query($updateSql) === TRUE) {
-                echo "Entrada actualizada correctamente.";
             } else {
                 echo "Error al actualizar la entrada: " . $conn->error;
             }    
@@ -91,7 +90,6 @@ class MailModel {
             $insertSql = "INSERT INTO puntuaciones (id_user, mail) VALUES ($id_user, $count)";
             
             if ($conn->query($insertSql) === TRUE) {  
-                echo "Nueva entrada creada correctamente.";
             } else {
                 echo "Error al crear la nueva entrada: " . $conn->error;
             }

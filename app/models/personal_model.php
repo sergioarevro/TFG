@@ -4,8 +4,7 @@
  * mostrar el test de información demografico.
  */
 
-$documentRoot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING);
-include $documentRoot . '/TFG/config/config.php';
+include 'config/config.php';
 
 class PersonalModel {
     private $tables;
@@ -13,7 +12,7 @@ class PersonalModel {
     
     public function __construct($db_connector) {
         session_start();
-        $this->tables = ['sexo','color', 'lugar_residencia', 'estudios', 'ocupación'];
+        $this->tables = ['sexo','color', 'lugar_residencia', 'estudios', 'ocupacion'];
         $this->db_connector = $db_connector;
     }
     

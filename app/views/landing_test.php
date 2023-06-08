@@ -15,23 +15,23 @@
                                 
                                 <?php if ($test == 'demografico') { ?>
                                     <h2 class='col-md-12'>Test de Información demográfica</h2>
-                                    <p class="col-md-12">Descripción del test demográfico</p>
+                                    <p class="col-md-12">En este test deberás responder una serie de preguntas sobre tu situación demográfica, como por ejemplo tu edad, sitio de residencia y similares.</p>
                                     <?php $test='users'; ?>
                                 <?php }?>
                                     
                                 <?php if ($test == 'operas') { ?>
                                     <h2 class='col-md-12'>Test OPERAS</h2>
-                                    <p class="col-md-12">Descripción del OPERAS</p>
+                                    <p class="col-md-12">En este test deberás responder una serie de preguntas para evaluar tu personalidad mediante el test Operas.</p>
                                 <?php }?>
                                     
                                 <?php if ($test == 'iq') { ?>
                                     <h2 class='col-md-12'>Test de IQ</h2>
-                                    <p class="col-md-12">Descripción del IQ</p>
+                                    <p class="col-md-12">En este test deberás responder una serie de preguntas para evaluar tu coeficiente intelectual. </p>
                                 <?php }?>
 
                                 <?php if ($test == 'mail') { ?>
                                     <h2 class='col-md-12'>Test de Mail Phishing</h2>
-                                    <p class="col-md-12">Descripción del Mail Test.</p>
+                                    <p class="col-md-12">En este test se proponen una serie de emails que pueden ser o no phishing.</p>
                                     <p class="col-md-12">Escoge entre realizar el test en modo entrenamiento o en modo experimento. El modo entrenamiento da feedback sobre las respuestas.</p>
                                     
                                     <form id="formMail" method="POST" action="index.php">

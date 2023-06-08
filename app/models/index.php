@@ -1,8 +1,10 @@
 <?php
-
-    $documentRoot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING);
-    include 'config/config.php';
-    include 'config/database.php';
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+    //$documentRoot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING);
+    //include $documentRoot . '/TFG/config/config.php';
+    //include ROOT_PATH.'config/database.php';
 
     //Inicializaciones
     $db_connector = DataBase::getInstance();
@@ -31,7 +33,7 @@
                     $sex = $personal_model-> read('sexo');
                     $place = $personal_model-> read('lugar_residencia');
                     $studies = $personal_model-> read('estudios');
-                    $ocupation = $personal_model-> read('ocupacion');
+                    $ocupation = $personal_model-> read('ocupación');
                     require_once VIEWS_PATH.'user_data_view.php';
                     break;
 
@@ -106,7 +108,7 @@
                     $next_quest = $iq_model->getNextQuestion();
                     $rows = $iq_model->getNumQuest();
                     
-                    if ($next_quest == 0 || $quest_id >= $rows){             //Test finalizado
+                    if ($next_quest == 0 || $num_quest >= $rows){             //Test finalizado
                         $iq_model->setFinalScore();
                         $test='mail';
                         require_once VIEWS_PATH . 'landing_test.php';
@@ -182,9 +184,10 @@
                     $user_id = $_SESSION['user_id'];
                     
                     if (! $user_id){
-                        $sql = "INSERT INTO users (id_sex, date_of_birth, id_color, id_lugar_residencia, id_estudios, id_ocupacion) VALUES (1,'1111-11-11',1,1,1,1)";
+                        $sql = "INSERT INTO users (id_sex, date_of_birth, id_color, id_lugar_residencia, id_estudios, id_ocupación)
+                        VALUES ('1', '1111-11-11', '1', '1', '1', '1')";
 
-                        if ($conn->query($sql) === FALSE) {
+                        if (!$conn->query($sql) === TRUE) {
                              echo "Error inserting." . $conn->error;
                         }
 
@@ -197,13 +200,12 @@
                         $result = mysqli_query($conn, $sql);
                         
                         if (mysqli_num_rows($result) <= 0){
-                            $sql = "INSERT INTO users (id_sex, date_of_birth, id_color, id_lugar_residencia, id_estudios, id_ocupacion) VALUES (1,'1111-11-11',1,1,1,1)";
+                            $sql = "INSERT INTO users (id_sex, date_of_birth, id_color, id_lugar_residencia, id_estudios, id_ocupación)
+                                    VALUES ('1', '1111-11-11', '1', '1', '1', '1')";
 
-                            if ($conn->query($sql) === FALSE) {
+                            if (!$conn->query($sql) === TRUE) {
                                  echo "Error inserting." . $conn->error;
                             }
-                        $user_id = mysqli_insert_id($conn);
-                        $_SESSION['user_id'] = $user_id;
                         }                        
                     }
 

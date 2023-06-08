@@ -4,8 +4,7 @@
  * de usuario en la tabla users
  */
 
-$documentRoot = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_STRING);
-include $documentRoot . '/TFG/config/config.php';
+include 'config/config.php';
 
 class UserModel {
 
@@ -14,7 +13,7 @@ class UserModel {
     
     public function __construct($db_connector) {
         session_start();
-        $this->foreign_tables = array("color","lugar_residencia","estudios","ocupación");
+        $this->foreign_tables = array("color","lugar_residencia","estudios","ocupacion");
         $this->db_connector = $db_connector;
     }
     
@@ -29,13 +28,21 @@ class UserModel {
             $studies = mysqli_real_escape_string($conn, $_POST['studies']);
             $ocupation = mysqli_real_escape_string($conn, $_POST['ocupation']);
         }
+        
+        if ($_SESSION['user_id']){
+            $user_id  = $_SESSION['user_id'];
+            $sql = "UPDATE users SET id_sex = '$sex', date_of_birth = '$date_of_birth', id_color = '$colour', id_lugar_residencia = '$place',"
+            . "id_estudios = '$studies', id_ocupacion = '$ocupation' WHERE id = '$user_id'";
+            $this->execute($conn, $sql);
+        }
+        else{     
+            $sql = "INSERT INTO users (id_sex, date_of_birth, id_color, id_lugar_residencia, id_estudios, id_ocupacion)
+            VALUES ('$sex', '$date_of_birth', '$colour', '$place', '$studies', '$ocupation')";
+            $this->execute($conn, $sql);
 
-        $sql = "INSERT INTO users (id_sex, date_of_birth, id_color, id_lugar_residencia, id_estudios, id_ocupación)
-        VALUES ('$sex', '$date_of_birth', '$colour', '$place', '$studies', '$ocupation')";
-        $this->execute($conn, $sql);
-
-        $user_id = mysqli_insert_id($conn);
-        $_SESSION['user_id'] = $user_id;
+            $user_id = mysqli_insert_id($conn);
+            $_SESSION['user_id'] = $user_id;
+        }
 
         $this->db_connector->closeConnection($conn);
     }

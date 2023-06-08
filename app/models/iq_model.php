@@ -98,6 +98,8 @@ class IqModel {
     public function insertAnswer($question_id, $answer, $correct){
         $conn = $this->db_connector->getConnection();
         $user_id = $_SESSION['user_id'];
+        
+        file_put_contents("/Applications/MAMP/logs/php_errors.log", "dentro insert answer user = $user_id, quest = $question_id, ans = $answer" . PHP_EOL, FILE_APPEND);
 
         $sql = "INSERT INTO answers_iq (id_user, id_quest_iq, answer, correct) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);  
@@ -144,7 +146,6 @@ class IqModel {
         
         $conn = $this->db_connector->getConnection();
         $user_id = $_SESSION['user_id'];
-        
 
         if ($question_id >= 1 && $question_id <= 3){
             $this->insertAnswer($question_id, $answer, $this->checkCorrect($question_id, $answer));
@@ -158,6 +159,7 @@ class IqModel {
                 if ($question_id == 5){
                     if($this->checkTwoQuest($question_id, $question_id-1)){
                         for($i = 0; $i < 4; $i++){         //Damos como correctas las preguntas 1,2 y 3
+                            file_put_contents("/Applications/MAMP/logs/php_errors.log", "dentro bucle quest = $i, user = $user_id" . PHP_EOL, FILE_APPEND);
                             $this->updateAnswer($user_id,$i,1);
                         }
                     }
@@ -237,6 +239,7 @@ class IqModel {
     public function checkConditions($last_question){
         $conn = $this->db_connector->getConnection();
         $user_id = $_SESSION['user_id'];
+        
         $last_questions= array();        //Array que guarda las ultimas 5 respuestas
         $errors_consec = 0;                 //Contador de errores consecutivos en las 5 respuestas anteriores
         $errors_last_five = 0;              //Contador de numero de fallos en las 5 respuestas anteriores
@@ -282,7 +285,7 @@ class IqModel {
     public function updateAnswer($user_id,$question_id, $correct){
         $conn = $this->db_connector->getConnection();
 
-        $sql = "UPDATE answers_iq SET correct = $correct WHERE id_user = $user_id AND id_quest_iq = $question_id";
+        $sql = "UPDATE answers_iq SET correct=$correct WHERE id_user=$user_id AND id_quest_iq=$question_id";
         $this->execute($conn, $sql);
         $this->db_connector->closeConnection($conn);     
     }
@@ -334,6 +337,8 @@ class IqModel {
         $conn = $this->db_connector->getConnection();
         $id_user = $_SESSION['user_id'];
         
+        //if (!$user_id) $user_id = 1;
+        
         $sql1 = "SELECT correct FROM answers_iq WHERE id_user = $id_user AND id_quest_iq = $question_id1";
         
         $resultado1 = $conn->query($sql1);
@@ -373,6 +378,8 @@ class IqModel {
         $conn = $this->db_connector->getConnection();
         $id_user = $_SESSION['user_id'];
         
+        //if (!$user_id) $user_id = 1;
+        
         $sql = "SELECT COUNT(*) AS count FROM answers_iq WHERE id_user = $id_user AND correct = 1";
 
         $result = $conn->query($sql);
@@ -394,6 +401,8 @@ class IqModel {
     public function setFinalScore(){
         $conn = $this->db_connector->getConnection();
         $id_user = $_SESSION['user_id'];
+        
+        //if (!$user_id) $user_id = 1;
         
         $sql1 = "SELECT COUNT(*) AS count FROM answers_iq WHERE correct = 1 AND id_user = $id_user";
         $result1 = $conn->query($sql1);
